@@ -1,1 +1,86 @@
-/* pages/home/index/index.wxss */
+
+.index-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.index-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.header-content{
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  background: #3CC4A9;
+  color: white;
+  font-size: 30rpx;
+  padding: 20rpx 20rpx;
+  border-radius: 15rpx;
+  box-shadow: 0rpx 0rpx 15rpx 6rpx gainsboro;
+}
+
+.logo-name{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: 20rpx;
+}
+
+.body-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100rpx;
+}
+
+.content{
+  width: 85%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.content-item{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+}
+
+.item{
+  width: 250rpx;
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15rpx;
+  box-shadow: 0rpx 0rpx 15rpx 6rpx gainsboro;
+  margin-bottom: 70rpx;
+}
+
+.content-item image{
+  width: 90rpx;
+  height: 90rpx;
+}
+
+.wechat-single{
+  background: #3CC4A9;
+  color: white;
+}

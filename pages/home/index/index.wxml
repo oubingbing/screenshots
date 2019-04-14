@@ -1,2 +1,34 @@
-<!--pages/home/index/index.wxml-->
-<text>pages/home/index/index.wxml</text>
+<view class="index-container">
+  <view class='index-content'>
+  
+    <view class='header'>
+      <view class='header-content'>
+        <view class='notice'>
+          根据自己的需要完成截图后，为了让截图显得更加真实，需要根据系统提示完成对截图的调整，遵纪守法，文明上网，恶搞人生，哈哈。
+        </view>
+        <view class='logo-name'>——恶搞截图</view>
+      </view>
+    </view>
+
+    <view class='body-content'>
+      <view class='content'>
+
+        <view class='content-item' bindtap='navigateSingle'>
+          <view class='item wechat-single'>
+            <image src='/images/wx_log.png'></image>
+            <view class='label'>单人</view>
+          </view>
+        </view>
+
+        <view class='content-item'>
+          <view class='item wechat-single'>
+            <image src='/images/wx_log.png'></image>
+            <view class='label'>群聊</view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+  </view>
+</view>

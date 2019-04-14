@@ -22,7 +22,7 @@ Page({
     chatList:chatData,
     to:12,
     scrollTop:3500,
-    showOperate:true,
+    showOperate:false,
     leftUser:{nickname:'',avatar:''},
     rightUser: { nickname: '', avatar: '' },
     hiddenLeftInput:false,
