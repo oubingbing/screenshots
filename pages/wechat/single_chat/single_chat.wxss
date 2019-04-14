@@ -1,0 +1,332 @@
+page{
+  background: #F5F5F5;
+}
+
+.letter-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top-style:solid;
+  border-width:1rpx;
+  border-color: #F0F8FF;
+  background: #F5F5F5;
+}
+
+.letter-content{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50rpx;
+}
+
+.scroll-view-item{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.scroll-view-item .user-left{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.user-left .left-content-avatar{
+  width: 13%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.left-content-avatar image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+}
+
+.left-content{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.left-content .left-content-message{
+  display: flex;
+  flex-direction: row;
+}
+
+.left-content-message .left-content-item{
+  border-radius: 10rpx;
+  padding: 20rpx;
+  background: white;
+}
+
+.left-content image{
+  width: 350rpx;
+}
+
+.right-content image{
+  width: 350rpx;
+}
+
+.left-content .left-time{
+  font-size: 30rpx;
+  color: darkgray;
+  margin-top: 15rpx;
+  margin-left: 30rpx;
+}
+
+.left-content-message .qipao{
+  width: 0;
+  height: 0;
+  border-top: 20rpx solid #F5F5F5;
+  border-right: 15rpx solid white;
+  border-bottom: 15rpx solid #F5F5F5;
+  margin-top:25rpx;
+}
+
+.right-content-message .qipao{
+  width: 0;
+  height: 0;
+  border-top: 20rpx solid #F5F5F5;
+  border-left: 15rpx solid #32CD32;
+  border-bottom: 15rpx solid #F5F5F5;
+  margin-top: 25rpx;
+}
+
+/** right **/
+.scroll-view-item .user-right{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.user-right .right-content-avatar{
+  width: 13%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.right-content-avatar image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+}
+
+.right-content{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  justify-content: flex-end;
+}
+
+.right-content .right-content-message{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.right-content-message .right-content-item{
+  background: #32CD32;
+  padding: 20rpx;
+  border-radius: 10rpx;
+}
+
+.right-content .right-time{
+  font-size: 30rpx;
+  color: darkgray;
+  margin-top: 15rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+/** 新的输入框 **/
+.footer{
+  position:fixed;
+  bottom: 0rpx;
+  z-index:100;
+  width: 100%;
+  background: WhiteSmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+   box-shadow: 0rpx 0rpx 0.5rpx 0.5rpx #DCDCDC;
+}
+
+.footer-content{
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.sound-icon{
+  width: 15%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sound-icon image{
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.textarea{
+  width: 62%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.txt{
+  width: 100%;
+  background: white;
+  padding: 25rpx 0rpx;
+  border-radius: 8rpx;
+}
+
+.left-wx-icon{
+  width: 23%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.left-wx-icon image{
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.operate-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top-style:solid;
+  border-width:1rpx;
+  border-color: gainsboro;
+}
+
+.operate-content{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  font-size: 30rpx;
+  padding: 50rpx 0rpx;
+  flex-wrap: wrap;
+}
+
+.operate-item{
+  width: 25%;
+  height: 150rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 50rpx;
+}
+
+.operate-item image{
+  width: 70rpx;
+  height: 70rpx;
+  background: white;
+}
+
+.image-wall{
+  background: white;
+  width: 120rpx;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20rpx;
+}
+
+.item-txt{
+  margin-top: 10rpx;
+  color: darkgray;
+}
+
+/** 聊天成员设置 **/
+.chat-members{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-top-style:solid;
+  border-width:1rpx;
+  border-color: gainsboro;
+  align-items: center;
+  padding: 20rpx 0rpx;
+}
+
+.member{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+  color: darkgray;
+  align-items: center;
+}
+
+.member-content{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10rpx;
+}
+
+.member-content image{
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.member-left{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.member-right{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nickname-input{
+  background: white;
+  padding: 10rpx 0rpx;
+  width: 70%;
+  text-align: center;
+  border-radius: 15rpx;
+  margin-top: 10rpx;
+}
+
+.member-nickname{
+  font-size: 30rpx;
+  color: darkgray;
+}

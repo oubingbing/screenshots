@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/home/index/index",
+    "pages/wechat/single_chat/single_chat",
+    "pages/wechat/add_message/add_message",
+    "pages/common/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "white",
+    "navigationBarTitleText": "恶搞截图",
+    "navigationBarTextStyle": "black"
+  },
+  "plugins": {
+    "uploadPlugins": {
+      "version": "1.3.0",
+      "provider": "wx00caa212d6710dcb"
+    }
+  }
+}

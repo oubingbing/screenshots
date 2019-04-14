@@ -1,0 +1,57 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": false,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.4",
+	"appid": "wx0f587d7c97a68e2b",
+	"projectname": "%E8%81%8A%E5%A4%A9%E6%88%AA%E5%9B%BE",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 2,
+			"list": [
+				{
+					"id": 2,
+					"name": "表白",
+					"pathName": "pages/index/post/post",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "微信聊天窗口",
+					"pathName": "pages/wechat/single_chat/single_chat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试编辑图片",
+					"pathName": "pages/common/index/index",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

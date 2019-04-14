@@ -1,0 +1,178 @@
+<view class="letter-container">
+
+  <scroll-view scroll-y
+              bindtouchmove="hiddenOperate"
+              bindtap='hiddenOperate'
+              bindscrolltoupper="upper" 
+              bindscrolltolower="lower"
+              scroll-top="{{scrollTop}}" 
+              bindscroll="scroll" 
+              wx:for="{{chatList}}" 
+              wx:key="{{item}}"
+              class='letter-content'>
+    <block wx:if="{{item.data_type==0}}">
+      <view class="scroll-view-item">
+        <view class='user-left'>
+          <view class='left-content-avatar'>
+            <image src='{{item.user.avatar}}'></image>
+          </view>
+          <view class='left-content'>
+            <view class='left-content-message'>
+            <view class="qipao"></view>
+              <view wx:if="{{item.message.type==1}}" 
+                    class='left-content-item'>
+                    {{item.message.content}}
+              </view>
+              <view class='left-content-item' 
+                    wx:if="{{item.message.type==2}}">
+                <image mode='widthFix' 
+                      bindtap='previewImage'
+                      id="{{item.message.content}}"
+                      src="{{item.message.content}}"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{item.data_type==1}}">
+      <view class="scroll-view-item">
+        <view class='user-right'>
+          <view class='right-content' 
+                bindlongpress="deleteContent">
+            <view class='right-content-message'>
+              <view class='right-content-item'
+                    wx:if="{{item.message.type==1}}">
+                    {{item.message.content}}
+              </view>
+              <view class='right-content-item' 
+                    wx:if="{{item.message.content.type==2}}">
+                <image mode='widthFix' 
+                      bindtap='previewImage'
+                      id="{{item.message.content}}"
+                      src="{{item.message.content}}"></image>
+              </view>
+              <view class="qipao"></view>
+            </view>
+          </view>
+          <view class='right-content-avatar'>
+            <image src='{{item.user.avatar}}'></image>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+
+  <!-- 底部操作输入 -->
+  <view class='footer'>
+    <view class='footer-content' bindtap='operate'>
+      <view class='sound-icon'>
+        <image src='/images/wx-sound.png'></image>
+      </view>
+      <view class='textarea'>
+        <textarea class='txt'
+                  maxlength="1024" 
+                  fixed="true"
+                  cursor-spacing="10"
+                  auto-height/>
+      </view>
+      <view class='left-wx-icon'>
+        <image src='/images/wx-face.png'></image>
+        <image src='/images/wx-add.png'></image>
+      </view>
+    </view>
+
+    <!-- 添加成员 -->
+    <view class='chat-members' wx:if="{{showOperate}}">
+      <view class='member'>
+        <view class='title'>添加聊天成员</view>
+        <view class='member-content'>
+          <view class='member-left'>
+            <image src='/images/select-image.png' 
+                   wx:if="{{leftUser.avatar==''}}" 
+                   data-type='0' 
+                   bindtap='selectImage'></image>
+            <image src='{{leftUser.avatar}}' 
+                   mode='aspectFill' 
+                   wx:if="{{leftUser.avatar!=''}}" 
+                   data-type='0' 
+                   bindtap='selectImage'></image>
+            <input type='text' 
+                  class='nickname-input'
+                  wx:if="{{hiddenLeftInput==false}}" 
+                  placeholder="昵称"
+                  data-type='0'
+                  bindblur="loseCous"
+                  value='{{leftValue}}'          
+                  bindinput='getNickname'/>
+            <view class='member-nickname' 
+                  data-type='0'
+                  bindtap='showInputView'
+                  wx:if="{{hiddenLeftInput==true}}">{{leftUser.nickname}}</view>
+          </view>
+          <view class='member-right'>
+            <image src='/images/select-image.png' 
+                   wx:if="{{rightUser.avatar==''}}" 
+                   data-type='1' 
+                   bindtap='selectImage'></image>
+            <image src='{{rightUser.avatar}}' 
+                   mode='aspectFill' 
+                   wx:if="{{rightUser.avatar!=''}}" 
+                   data-type='1' 
+                   bindtap='selectImage'></image>
+            <input type='text' 
+                  class='nickname-input'
+                  wx:if="{{hiddenRightInput==false}}"
+                  data-type='1'
+                  value='{{rightValue}}'
+                  bindblur="loseCous"   
+                  placeholder="昵称"         
+                  bindinput='getNickname'/>
+            <view class='member-nickname'
+                  data-type='1'
+                  bindtap='showInputView' 
+                  wx:if="{{hiddenRightInput==true}}">{{rightUser.nickname}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='operate-container' wx:if="{{showOperate}}">
+      <view class='operate-content'>
+
+        <view class='operate-item'>
+          <view class='image-wall'><image src='/images/wx-txt.png'></image></view>
+          <view class='item-txt'>添加文字</view>
+        </view>
+
+        <view class='operate-item'>
+          <view class='image-wall'><image src='/images/wx-image.png'></image></view>
+          <view class='item-txt'>添加图片</view>
+        </view>
+
+        <view class='operate-item'>
+          <view class='image-wall'><image src='/images/wx-sound-img.png'></image></view>
+          <view class='item-txt'>添加语音</view>
+        </view>
+
+        <view class='operate-item'>
+          <view class='image-wall'><image src='/images/wx-image.png'></image></view>
+          <view class='item-txt'>添加时间</view>
+        </view>
+
+        <view class='operate-item'>
+          <view class='image-wall'><image src='/images/wx-rp.png'></image></view>
+          <view class='item-txt'>添加红包</view>
+        </view>
+
+        <view class='operate-item'>
+          <view class='image-wall'><image src='/images/wx-tansport.png'></image></view>
+          <view class='item-txt'>添加转账</view>
+        </view>
+
+      </view>
+    </view>
+  </view>
+
+</view>
