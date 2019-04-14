@@ -91,7 +91,7 @@ page{
   width: 0;
   height: 0;
   border-top: 20rpx solid #F5F5F5;
-  border-left: 15rpx solid #32CD32;
+  border-left: 15rpx solid #00EE76;
   border-bottom: 15rpx solid #F5F5F5;
   margin-top: 25rpx;
 }
@@ -132,7 +132,7 @@ page{
 }
 
 .right-content-message .right-content-item{
-  background: #32CD32;
+  background: #00EE76;
   padding: 20rpx;
   border-radius: 10rpx;
 }
