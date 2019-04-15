@@ -61,14 +61,10 @@ Page({
     rankPageNumber: 1,
     myRankData: '',
     myRank: 0,
-
-
     imagePath: ''
   },
 
   onLoad: function (option) {
-
-
     wx.getSystemInfo({
       success: res => {
         let clientHeight = res.windowHeight;
@@ -81,19 +77,12 @@ Page({
         });
       }
     })
-
-
-
-
   },
-
 
   getReport: function () {
     wx.showLoading({ title: '海报生成中' });
     this.drawReport();
   },
-
-
 
   /**
    * 绘制报告
