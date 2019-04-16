@@ -3,13 +3,21 @@ Page({
   data: {
     showCanves:false,
     screenImage:'',
-    showImage:false
+    showImage:false,
+    pixelRatio: 0,
+    width:0,
+    height:0
   },
 
   onLoad: function (options) {
     wx.getSystemInfo({
       success:res=> {
-        this.setData({ pixelRatio: res.pixelRatio})
+        this.setData({ 
+          pixelRatio: res.pixelRatio,
+          width: 375 * res.pixelRatio,
+          height: 667*res.pixelRatio
+        });
+        console.log(res)
       }
     })
   },
@@ -34,7 +42,9 @@ Page({
   editSreeb: function (imgPath) {
     const ctx = wx.createCanvasContext('myCanvas');
 
-    ctx.drawImage(imgPath, 0, 0, 375, 667);
+    let pixelRatio = this.data.pixelRatio;
+
+    ctx.drawImage(imgPath, 0, 0, 375, 667 );
     ctx.setFillStyle("#EDEDED")
     ctx.fillRect(260, 30, 110, 40)
     ctx.drawImage('/images/wechat-more.png', 333, 40, 20, 20);
@@ -43,7 +53,11 @@ Page({
     let that = this;
     setTimeout(function () {
       wx.canvasToTempFilePath({
+        destWidth: 375 *3,
+        destHeight: 667 * 3,
         canvasId: 'myCanvas',
+        fileType:'jpg',
+        quality:1,
         success: function (res) {
           wx.hideLoading();
           var tempFilePath = res.tempFilePath;
@@ -53,7 +67,7 @@ Page({
           wx.hideLoading();
         }
       });
-    }, 200);
+    }, 500);
   },
 
   /**

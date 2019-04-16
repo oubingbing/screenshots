@@ -15,6 +15,6 @@
     <view bindtap='saveImage' class='save-image'>保存</view>
   </view>
 
-<canvas class='convas' canvas-id="myCanvas" hidden='ture'/>
+<canvas class='canves' style='width: 375px;height:667px' canvas-id="myCanvas" hidden='false'/>
 
 </view>
