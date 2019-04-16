@@ -30,5 +30,20 @@
       </view>
     </view>
 
+    <!-- 授权 -->
+    <view wx:if="{{showAuth}}" class='auth-container'>
+      <view class='auth-wall'>
+        <view class='auth-tips'>
+          <image src='/images/wechat-logo.png'></image>
+          <view>授权您的公开信息(昵称和头像)</view>
+        </view>
+        <button open-type="getUserInfo" 
+                bindgetuserinfo="getAuthUserInfo" 
+                class='auth-button'>
+          <view>授权登录</view>
+        </button>
+      </view>
+    </view>
+
   </view>
 </view>

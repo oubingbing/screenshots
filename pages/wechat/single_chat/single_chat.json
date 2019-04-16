@@ -1,5 +1,4 @@
 {
-  "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark",
   "navigationBarTitleText": "",
   "usingComponents": {
