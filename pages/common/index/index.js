@@ -97,7 +97,7 @@ Page({
 
     const ctx = wx.createCanvasContext('myCanvas')
 
-    ctx.drawImage('/image/tb.jpg', 0, 0, 375, 667);
+    ctx.drawImage('/images/test.jpg', 0, 0, 375, 667);
 
     ctx.setFillStyle("#F5F5F5")
     ctx.fillRect(260, 30, 110, 40)

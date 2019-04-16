@@ -8,17 +8,7 @@ App({
     this.globalData.appKey = config.alianceKey;
     this.globalData.imageUrl = config.qiniuDomain;
     this.globalData.bgIimage = config.bgImage;
-    
-    this.globalData.reloadSale = false;
-    this.globalData.reloadHome = false;
-    this.globalData.param = false;
 
-    let token = wx.getStorageSync('token');
-    if (!token) {
-      this.login();
-    } else {
-      console.log('token=' + token);
-    }
   },
 
   /**
@@ -74,35 +64,6 @@ App({
       }
     })
   },
-  /**
-   * 获取新的消息盒子
-   */
-  getNewInbox:function(type,callback){
-    http.get( `/new/${type}/inbox`, {}, function (res) {
-      callback(res);
-    });
-  },
-
-  /**
-   * 获取新的消息盒子
-   */
-  getParam: function (callback) {
-    let id = config.alianceKey;
-    http.get(`/config?app_id=${id}`, {}, function (res) {
-      callback(res);
-    });
-  },
-
-  /**
-   * 收集form id
-   */
-  collectFormId:function(formId){
-    http.post( `/save_form_id`, {
-      form_id:formId
-    }, function (res) {
-      console.log(res);
-    });
-  },
 
   globalData: {
     appId:null,
@@ -117,6 +78,7 @@ App({
     postHelp:false,
     reloadSale:false,
     reloadHome:false,
-    param:false
+    param:false,
+    ifScreen:false
   }
 })

@@ -20,12 +20,12 @@
           </view>
         </view>
 
-        <view class='content-item'>
+        <!--<view class='content-item'>
           <view class='item wechat-single'>
             <image src='/images/wx_log.png'></image>
             <view class='label'>群聊</view>
           </view>
-        </view>
+        </view>-->
 
       </view>
     </view>

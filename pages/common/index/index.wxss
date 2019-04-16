@@ -455,7 +455,6 @@ page{
   background-repeat:no-repeat; 
   background-size:100% 100%;
   background:rgba(2,2,2,0.8);
-
 }
 
 .convas-save{

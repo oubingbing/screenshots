@@ -1,0 +1,20 @@
+<view class='edit-container'>
+  <view class="page-body" >
+    <view class='select-icon'>
+      <view class='icon' bindtap='selectImage'>
+        <image src='/images/select-image.png'></image>
+        <view class='select-title'>选择需要处理的截图</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='image-container' wx:if="{{showImage}}">
+    <view class='image-content'>
+      <image src='{{screenImage}}' mode='widthFix'></image>
+    </view>
+    <view bindtap='saveImage' class='save-image'>保存</view>
+  </view>
+
+<canvas class='convas' canvas-id="myCanvas" hidden='ture'/>
+
+</view>

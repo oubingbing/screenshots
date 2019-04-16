@@ -13,19 +13,21 @@ const RECEIVED_RED_PACKET = 6;
 const TRANSFER_AMOUNT = 7;
 const RECEIVE_TRANSFER_AMOUNT = 8;
 
-const icon = 'http://image.kucaroom.com//tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.ATIzBaoptXWG8c3ea5b7fe584cf68b45959a9f934eee.png';
-
-let leftAvatar ='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIRSkNHofic4wB9oyZrFBybUGjozW4DKtGJYWTWORATffxUtFLt1Cm3ibP0YVtfRicERVhsSickhgZic2w/132';
-
-let rightAvatar = 'https://wx.qlogo.cn/mmopen/vi_32/GROKibUIbrhvZElK1kTiaF8Gxzny9hmsLp4Lavtkd8tFvHSggsmBUcacfULIpLiceL4XKALYg6bzTibUOGVicsTSXVw/132';
-
-let templateData = {
-  data_type: 1, 
-  user: { nickname: '', avatar: '' }, 
-  message: { type: 1, content: '' } 
-};
-
-let chatData = [];
+wx.onUserCaptureScreen(function (res) {
+  wx.showModal({
+    title: '系统提示',
+    content: '需要对截图进行优化处理，使得截图更加真实',
+    success(res) {
+      if (res.confirm) {
+        wx.navigateTo({
+          url: '/pages/common/edit_screen/edit_screen'
+        })
+      } else if (res.cancel) {
+        console.log('用户点击取消')
+      }
+    }
+  })
+})
 
 Page({
   data: {
@@ -33,7 +35,7 @@ Page({
     hiddenRightInput: false,
     showOperate: false,
     showCreateView: false,
-    chatList:chatData,
+    chatList:[],
     to:12,
     scrollTop:3500,
     leftUser:{nickname:'',avatar:''},
@@ -63,6 +65,10 @@ Page({
         timingFunc: 'easeIn'
       }
     })
+  },
+
+  onUserCaptureScreen:function(){
+    console.log("截屏了");
   },
 
   /**

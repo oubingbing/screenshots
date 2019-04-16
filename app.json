@@ -3,7 +3,8 @@
     "pages/home/index/index",
     "pages/wechat/single_chat/single_chat",
     "pages/wechat/add_message/add_message",
-    "pages/common/index/index"
+    "pages/common/index/index",
+    "pages/common/edit_screen/edit_screen"
   ],
   "window": {
     "backgroundTextStyle": "light",

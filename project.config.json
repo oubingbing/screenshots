@@ -29,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 4,
 			"list": [
 				{
 					"id": 2,
@@ -47,6 +47,20 @@
 				{
 					"id": -1,
 					"name": "测试编辑图片",
+					"pathName": "pages/common/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "编辑截图",
+					"pathName": "pages/common/edit_screen/edit_screen",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试截图",
 					"pathName": "pages/common/index/index",
 					"query": "",
 					"scene": null
