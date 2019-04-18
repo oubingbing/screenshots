@@ -103,11 +103,11 @@ Page({
     let that = this;
     setTimeout(function () {
       wx.canvasToTempFilePath({
-        destWidth: 375 * 3,
+        destWidth: 375 *3,
         destHeight: 667 * 3,
         canvasId: 'myCanvas',
-        fileType: 'jpg',
-        quality: 1,
+        fileType:'jpg',
+        quality:1,
         success: function (res) {
           wx.hideLoading();
           var tempFilePath = res.tempFilePath;
