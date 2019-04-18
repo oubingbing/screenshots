@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "优化截图"
+  "navigationBarTitleText": "优化截图",
+  "usingComponents": {
+    "poster": "/components/canves/poster/index"
+  }
 }

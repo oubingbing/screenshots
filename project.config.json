@@ -5,11 +5,12 @@
 		"es6": true,
 		"postcss": false,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.4",
-	"appid": "wx0f587d7c97a68e2b",
+	"appid": "wx46d5674c81153f30",
 	"projectname": "%E6%81%B6%E6%90%9E%E6%88%AA%E5%9B%BE",
 	"condition": {
 		"search": {
@@ -29,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 5,
 			"list": [
 				{
 					"id": 2,
@@ -63,6 +64,12 @@
 					"name": "测试截图",
 					"pathName": "pages/common/index/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "群聊截图",
+					"pathName": "pages/wechat/group_chat/group_chat",
 					"scene": null
 				}
 			]

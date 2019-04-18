@@ -1,3 +1,4 @@
+
 <view class='edit-container'>
   <view class="page-body" >
     <view class='select-icon'>
@@ -15,6 +16,10 @@
     <view bindtap='saveImage' class='save-image'>保存</view>
   </view>
 
-<canvas class='convas' canvas-id="myCanvas" hidden='ture'/>
+  <poster id="poster" hide-loading="{{true}}" preload="{{false}}" hidden='true' config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
+</poster>
+
+<!--<canvas style='width: {{pxWidth}}px; height: {{pxHeight}}px;' canvas-id="myCanvas" hidden='true'/>-->
+
 
 </view>

@@ -13,6 +13,14 @@ Page({
    */
   onLoad: function (options) {
     this.checkoutAuth();
+
+    console.log("测试");
+    wx.getSystemInfo({
+      success:res=>{
+        console.log("型号");
+        console.log(res.platform);
+      }
+    })
   },
 
   checkoutAuth:function(){

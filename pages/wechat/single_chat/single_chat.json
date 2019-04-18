@@ -1,7 +1,4 @@
 {
   "backgroundTextStyle": "dark",
-  "navigationBarTitleText": "",
-  "usingComponents": {
-    "upload": "plugin://uploadPlugins/upload"
-  }
+  "navigationBarTitleText": ""
 }

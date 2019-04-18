@@ -16,7 +16,7 @@
         <view class='content-item' bindtap='navigateSingle'>
           <view class='item wechat-single'>
             <image src='/images/wx_log.png'></image>
-            <view class='label'>单人</view>
+            <view class='label'>单人截图</view>
           </view>
         </view>
 
