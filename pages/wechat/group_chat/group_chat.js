@@ -58,6 +58,9 @@ Page({
   },
 
   onLoad: function (option) {
+
+    wx.setNavigationBarTitle({ title: this.data.groupName });
+
     this.setMember();
     this.setStorageData();
 
@@ -69,6 +72,12 @@ Page({
         timingFunc: 'easeIn'
       }
     })
+
+    setTimeout(res => {
+      wx.pageScrollTo({
+        scrollTop: this.data.scrollTop += 1000
+      })
+    }, 500);
   },
 
   hiddenFooterView:function(){
@@ -323,6 +332,14 @@ Page({
    */
   showCreateView: function (e) {
 
+    if (this.data.groupName == '') {
+      wx.showToast({
+        title: '请打开群成员设置群名称',
+        icon: 'none'
+      })
+      return false;
+    }
+
     let leftUser = this.data.leftUser;
     let rightUser = this.data.rightUser;
     if (leftUser.nickname == '') {
@@ -412,6 +429,14 @@ Page({
       message: { type: 1, content: '', attachment: '' }
     };
 
+    if (this.data.groupName==''){
+      wx.showToast({
+        title: '请先填写群名称',
+        icon: 'none'
+      })
+      return false;
+    }
+
     if(user.nickname=='' || user.avatar == ''){
       wx.showToast({
         title: '所选群成员的昵称或头像不能为空',
@@ -481,12 +506,26 @@ Page({
       title: '添加成功',
       icon: 'none'
     })
+
+    setTimeout(res => {
+      wx.pageScrollTo({
+        scrollTop: this.data.scrollTop += 1000
+      })
+    }, 500);
   },
 
   /**
    * 添加图片
    */
   uploadImage: function () {
+
+    if (this.data.groupName == '') {
+      wx.showToast({
+        title: '请先填写群名称',
+        icon: 'none'
+      })
+      return false;
+    }
 
     let user = this.getPushUser();
     if (user.nickname == '' || user.avatar == '') {

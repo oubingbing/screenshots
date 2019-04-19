@@ -67,6 +67,12 @@ Page({
         timingFunc: 'easeIn'
       }
     })
+
+    setTimeout(res => {
+      wx.pageScrollTo({
+        scrollTop: this.data.scrollTop += 1000
+      })
+    }, 500);
   },
 
   onUserCaptureScreen:function(){
@@ -382,6 +388,12 @@ Page({
       title: '添加成功',
       icon:'none'
     })
+
+    setTimeout(res => {
+      wx.pageScrollTo({
+        scrollTop: this.data.scrollTop += 1000
+      })
+    }, 500);
   },
   
   /**
