@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 6,
 			"list": [
 				{
 					"id": 2,
@@ -70,6 +70,13 @@
 					"id": -1,
 					"name": "群聊截图",
 					"pathName": "pages/wechat/group_chat/group_chat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "微信红包截图",
+					"pathName": "pages/wechat/redpacket/redpacket",
 					"scene": null
 				}
 			]

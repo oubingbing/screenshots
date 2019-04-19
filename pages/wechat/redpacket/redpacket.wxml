@@ -1,0 +1,32 @@
+<view class="redpacket-container">
+  <view class='redpacket-content'>
+    <view class='header'>
+      <view class='header-content'>
+        <view class="userinfo">
+          <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIRSkNHofic4wB9oyZrFBybUGjozW4DKtGJYWTWORATffxUtFLt1Cm3ibP0YVtfRicERVhsSickhgZic2w/132'></image>
+          <view class='nickname'>叶子</view>
+        </view>
+        <view class='title'>恭喜发财，大吉大利</view>
+        <view class='amount-content'>
+          <view class='amount-label'>￥</view>
+          <view class='amount'>100</view>
+        </view>
+        <view class='tips-content'>
+          <view>已存入零钱，可直接体现</view>
+          <view class='right-image'>
+            <image src='/images/redpacket-right.png'></image>
+          </view> 
+        </view>
+      </view>
+      <view class='bg-content'></view>
+    </view>
+    <view class='footer'>
+      <view class='footer-content'>
+        <view class='face-icon'>
+          <image src='/images/redpacket-face.png'></image>
+        </view>
+        <view>回复一个表情到聊天</view>
+      </view>
+    </view>
+  </view>
+</view>
