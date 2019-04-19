@@ -50,7 +50,8 @@ Page({
     selectReceiveUser:1,
     transferAmount:0,
     getTransferAmountTo:0,
-    redPacketTitle:'恭喜发财，大吉大利'
+    redPacketTitle:'恭喜发财，大吉大利',
+    footerViewClass: ''
   },
 
   onLoad: function (option) {
@@ -124,7 +125,7 @@ Page({
   },
 
   operate:function(){
-    this.setData({ showOperate:true})
+    this.setData({ showOperate: true, footerViewClass: 'footer-full' })
   },
 
   /**
@@ -135,6 +136,14 @@ Page({
     this.setData({
       showOperate: false
     });
+  },
+
+  hiddenFooterView: function () {
+    if (this.data.showGroupMember == true) {
+      this.setData({ showGroupMember: false })
+    } else {
+      this.setData({ showOperate: false, footerViewClass: '' })
+    }
   },
 
   /**
@@ -155,14 +164,6 @@ Page({
     let attachments = [];
     attachments.push(uploadData.detail.key)
     this.send(null,attachments);
-  },
-
-
-  /**
-   * 设置title
-   */
-  setTitle: function (id,cantChat){
-    
   },
 
   /**
@@ -276,7 +277,7 @@ Page({
       return false;
     }
 
-    if (leftUser.nickname == '') {
+    if (leftUser.avatar == '') {
       wx.showToast({
         title: '请填写左边用户的头像',
         icon: 'none'

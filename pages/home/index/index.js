@@ -13,8 +13,6 @@ Page({
    */
   onLoad: function (options) {
     this.checkoutAuth();
-
-    console.log("测试");
     wx.getSystemInfo({
       success:res=>{
         console.log("型号");
@@ -46,9 +44,10 @@ Page({
     wx.setStorageSync('user',data.detail.userInfo);
   },
 
-  navigateSingle:function(){
+  wechatNavigate:function(e){
+    let url = e.currentTarget.dataset.url;
     wx.navigateTo({
-      url: '/pages/wechat/single_chat/single_chat'
+      url: url
     })
   },
 

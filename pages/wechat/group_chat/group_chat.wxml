@@ -209,8 +209,8 @@
   </scroll-view>
 
   <!-- 底部操作输入 -->
-  <view class='footer'>
-    <view class='footer-content' bindtap='operate'>
+  <view class='footer {{footerViewClass}}' catchtap='hiddenFooterView'>
+    <view class='footer-content' catchtap='operate'>
       <view class='sound-icon'>
         <image src='/images/wx-sound.png'></image>
       </view>
@@ -224,15 +224,24 @@
     </view>
 
     <!-- 添加成员 -->
-    <view class='chat-members' wx:if="{{showOperate}}">
+    <view class='chat-members' wx:if="{{showGroupMember}}" catchtap='test'>
       <view class='member'>
-        <view class='title'>添加聊天成员</view>
+        <view class='group-name'>
+          <view wx:if="{{showGroupName}}" catchtap='showGroupNameInput'>{{groupName}}</view>
+          <input type='text' 
+                 class='nickname-input'
+                 wx:if="{{!showGroupName}}" 
+                 placeholder="设置群名称"
+                 bindblur="loseGrouNameCous"
+                 value='{{groupName}}'          
+                 bindinput='getGroupname'/>
+        </view>
         <view class='member-content'>
           <view class='member-left'>
             <view class='member-group' wx:for="{{leftUser}}" wx:key="{{item}}">
-              <view class='select-member' data-type='0' bindtap='selectChatUser'>
-                <image src='/images/select-icon.png' wx:if="{{selectUser!=0}}"></image>
-                <image src='/images/select-choose.png' wx:if="{{selectUser==0}}"></image>
+              <view class='select-member' data-type='0' data-id='{{item.id}}' catchtap='selectChatUser'>
+                <image src='/images/select-icon.png' wx:if="{{item.select==false}}"></image>
+                <image src='/images/select-choose.png' wx:if="{{item.select==true}}"></image>
               </view>
               <view class='member-view'>
                 <view class='member-avatar'>
@@ -240,12 +249,12 @@
                         wx:if="{{item.avatar==''}}" 
                         data-type='0'
                         data-userid='{{item.id}}'
-                        bindtap='selectImage'></image>
+                        catchtap='selectImage'></image>
                   <image src='{{item.avatar}}' 
                         mode='aspectFill' 
                         wx:if="{{item.avatar!=''}}" 
                         data-type='0' 
-                        bindtap='selectImage'></image>
+                        catchtap='selectImage'></image>
                 </view>
                 <input type='text' 
                       class='nickname-input'
@@ -258,43 +267,10 @@
                       bindinput='getNickname'/>
                 <view class='member-nickname' 
                       data-type='0'
-                      bindtap='showInputView'
+                      catchtap='showInputView'
                       wx:if="{{item.showInput==false}}">{{item.nickname}}</view>
               </view>
             </view>
-
-            <!--<view class='member-group'>
-              <view class='select-member' data-type='0' bindtap='selectChatUser'>
-                <image src='/images/select-icon.png' wx:if="{{selectUser!=0}}"></image>
-                <image src='/images/select-choose.png' wx:if="{{selectUser==0}}"></image>
-              </view>
-              <view class='member-view'>
-                <view class='member-avatar'>
-                  <image src='/images/select-image.png' 
-                        wx:if="{{item.avatar==''}}" 
-                        data-type='0' 
-                        bindtap='selectImage'></image>
-                  <image src='{{item.avatar}}' 
-                        mode='aspectFill' 
-                        wx:if="{{item.avatar!=''}}" 
-                        data-type='0' 
-                        bindtap='selectImage'></image>
-                </view>
-                <input type='text' 
-                      class='nickname-input'
-                      wx:if="{{hiddenLeftInput==false}}" 
-                      placeholder="昵称"
-                      data-type='0'
-                      bindblur="loseCous"
-                      value='{{leftValue}}'          
-                      bindinput='getNickname'/>
-                <view class='member-nickname' 
-                      data-type='0'
-                      bindtap='showInputView'
-                      wx:if="{{hiddenLeftInput==true}}">{{leftUser.nickname}}</view>
-              </view>
-            </view>-->
-
           </view>
 
           <view class='member-right'>
@@ -303,12 +279,12 @@
                 <image src='/images/select-image.png' 
                       wx:if="{{rightUser.avatar==''}}" 
                       data-type='1' 
-                      bindtap='selectImage'></image>
+                      catchtap='selectImage'></image>
                 <image src='{{rightUser.avatar}}' 
                       mode='aspectFill' 
                       wx:if="{{rightUser.avatar!=''}}" 
                       data-type='1' 
-                      bindtap='selectImage'></image>
+                      catchtap='selectImage'></image>
               </view>
               <input type='text' 
                     class='nickname-input'
@@ -320,31 +296,34 @@
                     bindinput='getNickname'/>
               <view class='member-nickname'
                     data-type='1'
-                    bindtap='showInputView' 
+                    catchtap='showInputView' 
                     wx:if="{{hiddenRightInput==true}}">{{rightUser.nickname}}</view>
             </view>
-            <view class='select-member' data-type='1' bindtap='selectChatUser'>
-                <image src='/images/select-icon.png' wx:if="{{selectUser!=1}}"></image>
-              <image src='/images/select-choose.png' wx:if="{{selectUser==1}}"></image>
+            <view class='select-member' data-type='1' catchtap='selectChatUser'>
+                <image src='/images/select-icon.png' wx:if="{{rightUser.select ==false}}"></image>
+              <image src='/images/select-choose.png' wx:if="{{rightUser.select == true}}"></image>
             </view>
           </view>
         </view>
-
-        <view class='select-group-member'>继续添加成员</view>
-
       </view>
+      <view class='select-group-member' catchtap='addGroupMember'>继续添加成员</view>
     </view>
 
     <!-- 添加消息内容 -->
-    <view class='operate-container' wx:if="{{showOperate}}">
+    <view class='operate-container' wx:if="{{showOperate}}" catchtap='test'>
       <view class='operate-content'>
 
-        <view class='operate-item' bindtap='showCreateView' data-type='1'>
+        <view class='operate-item' catchtap='showMemberGroupView'>
+          <view class='image-wall'><image src='/images/member-setting.png'></image></view>
+          <view class='item-txt'>群成员设置</view>
+        </view>
+
+        <view class='operate-item' catchtap='showCreateView' data-type='1'>
           <view class='image-wall'><image src='/images/wx-txt.png'></image></view>
           <view class='item-txt'>添加文字</view>
         </view>
 
-        <view class='operate-item' bindtap='showCreateView' data-type='2'>
+        <view class='operate-item' catchtap='showCreateView' data-type='2'>
           <view class='image-wall'><image src='/images/wx-image.png'></image></view>
           <view class='item-txt'>添加图片</view>
         </view>
@@ -359,27 +338,27 @@
           <view class='item-txt'>添加时间</view>
         </view>-->
 
-        <view class='operate-item' bindtap='showCreateView' data-type='5'>
+        <view class='operate-item' catchtap='showCreateView' data-type='5'>
           <view class='image-wall'><image src='/images/wx-rp.png'></image></view>
           <view class='item-txt'>发红包</view>
         </view>
 
-        <view class='operate-item' bindtap='showCreateView' data-type='6'>
+        <view class='operate-item' catchtap='showCreateView' data-type='6'>
           <view class='image-wall'><image src='/images/wx-rp.png'></image></view>
           <view class='item-txt'>领红包</view>
         </view>
 
-        <view class='operate-item' bindtap='showCreateView' data-type='7'>
+        <view class='operate-item' catchtap='showCreateView' data-type='7'>
           <view class='image-wall'><image src='/images/wx-tansport.png'></image></view>
           <view class='item-txt'>添加转账</view>
         </view>
 
-        <view class='operate-item' bindtap='showCreateView' data-type='8'>
+        <view class='operate-item' catchtap='showCreateView' data-type='8'>
           <view class='image-wall'><image src='/images/wx-tansport.png'></image></view>
           <view class='item-txt'>添加收款</view>
         </view>
 
-        <view class='operate-item' bindtap='clearChat' data-type='8'>
+        <view class='operate-item' catchtap='clearChat' data-type='8'>
           <view class='image-wall'><image src='/images/clear.png'></image></view>
           <view class='item-txt'>清空聊天</view>
         </view>
@@ -390,7 +369,7 @@
   </view>
 
   <view class='create-view' wx:if="{{showCreateView}}">
-    <view class='null-container' bindtap='closeCreateView'></view>
+    <view class='null-container' catchtap='closeCreateView'></view>
     <view class='create-container'>
       <!-- 添加文字信息 -->
       <view class='create-text' wx:if="{{messageType==1}}">
@@ -417,28 +396,6 @@
           maxlength="1024"
           value='{{redPacketTitle}}'
           bindinput="getRedTextContent"/>
-        <view class='receive-man'>
-          <view class='left-receive receive-item'>
-            <image class='receive-icon' 
-                   src="{{selectReceiveUser==0?'/images/select-choose.png':'/images/select-icon.png'}}" 
-                   data-type='0' 
-                   bindtap='selectReceiveMan'></image>
-            <image class='receive-avatar'
-                   style='height:80rpx;width:80rpx;'
-                   mode='aspectFill'
-                   src='{{leftUser.avatar}}'></image>
-          </view>
-          <view class='right-receive receive-item'>
-            <image src="{{selectReceiveUser==1?'/images/select-choose.png':'/images/select-icon.png'}}"
-                   class='receive-icon' 
-                   data-type='1' 
-                   bindtap='selectReceiveMan'></image>
-            <image class='receive-avatar'
-                   style='height:80rpx;width:80rpx;'
-                   mode='aspectFill'
-                   src='{{rightUser.avatar}}'></image>
-          </view>
-        </view>
       </view>
 
       <!-- 转账 -->
@@ -451,30 +408,30 @@
           <view class='amount-label'>￥</view>
         </view>  
         <view class='receive-man'>
-          <view class='left-receive receive-item'>
-            <image class='receive-icon' 
-                   src="{{getTransferAmountTo==0?'/images/select-choose.png':'/images/select-icon.png'}}" 
-                   data-type='0' 
-                   bindtap='selectTransferAmountTo'></image>
-            <image class='receive-avatar' 
-                   style='height:80rpx;width:80rpx;'
-                   mode='aspectFill'
-                   src='{{leftUser.avatar}}'></image>
-          </view>
           <view class='right-receive receive-item'>
-            <image src="{{getTransferAmountTo==1?'/images/select-choose.png':'/images/select-icon.png'}}"
+            <image src="{{getTransferAmountTo==0?'/images/select-choose.png':'/images/select-icon.png'}}"
                    class='receive-icon' 
-                   data-type='1' 
-                   bindtap='selectTransferAmountTo'></image>
+                   data-type='0' 
+                   catchtap='selectTransferAmountTo'></image>
             <image class='receive-avatar' 
                    style='height:80rpx;width:80rpx;'
                    mode='aspectFill'
                    src='{{rightUser.avatar}}'></image>
           </view>
+          <view class='left-receive receive-item' wx:for="{{leftUser}}" wx:key="{{itme.id}}">
+            <image class='receive-icon' 
+                   src="{{getTransferAmountTo==item.id?'/images/select-choose.png':'/images/select-icon.png'}}" 
+                   data-type='{{item.id}}' 
+                   catchtap='selectTransferAmountTo'></image>
+            <image class='receive-avatar' 
+                   style='height:80rpx;width:80rpx;'
+                   mode='aspectFill'
+                   src='{{item.avatar}}'></image>
+          </view>
         </view>
       </view>
 
-      <!-- 转账 -->
+      <!-- 收钱 -->
       <view class='receive-redpacket' wx:if="{{messageType==8}}">
         <view class='amount-input'>
           <input
@@ -483,31 +440,9 @@
           bindinput="getTransferAmount"/>
           <view class='amount-label'>￥</view>
         </view>  
-        <view class='receive-man'>
-          <view class='left-receive receive-item'>
-            <image class='receive-icon' 
-                   src="{{getTransferAmountTo==0?'/images/select-choose.png':'/images/select-icon.png'}}" 
-                   data-type='0' 
-                   bindtap='selectTransferAmountTo'></image>
-            <image class='receive-avatar'
-                   mode='aspectFill'
-                   style='height:80rpx;width:80rpx;'
-                   src='{{leftUser.avatar}}'></image>
-          </view>
-          <view class='right-receive receive-item'>
-            <image src="{{getTransferAmountTo==1?'/images/select-choose.png':'/images/select-icon.png'}}"
-                   class='receive-icon' 
-                   data-type='1' 
-                   bindtap='selectTransferAmountTo'></image>
-            <image class='receive-avatar' 
-                   mode='aspectFill'
-                   style='height:80rpx;width:80rpx;'
-                   src='{{rightUser.avatar}}'></image>
-          </view>
-        </view>
       </view>
 
-      <view class='create-button' bindtap='pushMessage'>添加</view>
+      <view class='create-button' catchtap='pushMessage'>添加</view>
     </view>
   </view>
 

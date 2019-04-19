@@ -13,19 +13,19 @@
     <view class='body-content'>
       <view class='content'>
 
-        <view class='content-item' bindtap='navigateSingle'>
+        <view class='content-item' data-url='/pages/wechat/single_chat/single_chat' bindtap='wechatNavigate'>
           <view class='item wechat-single'>
             <image src='/images/wx_log.png'></image>
             <view class='label'>单人截图</view>
           </view>
         </view>
 
-        <!--<view class='content-item'>
+        <view class='content-item' data-url='/pages/wechat/group_chat/group_chat' bindtap='wechatNavigate'>
           <view class='item wechat-single'>
-            <image src='/images/wx_log.png'></image>
-            <view class='label'>群聊</view>
+            <image src='/images/wx-group.png'></image>
+            <view class='label'>群聊截图</view>
           </view>
-        </view>-->
+        </view>
 
       </view>
     </view>

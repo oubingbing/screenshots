@@ -36,11 +36,12 @@ Page({
     hiddenRightInput: false,
     showOperate: false,
     showCreateView: false,
+    showGroupMember:false,
     chatList: [],
     to: 12,
     scrollTop: 3500,
-    leftUser: [{id:1,nickname: '', avatar: '',showInput:true}],
-    rightUser: { nickname: '', avatar: '' },
+    leftUser: [{id:1,nickname: '', avatar: '',showInput:true,select:false}],
+    rightUser: { id:0,nickname: '', avatar: '',select:true},
     leftValue: '',
     rightValue: '',
 
@@ -50,14 +51,16 @@ Page({
     selectReceiveUser: 1,
     transferAmount: 0,
     getTransferAmountTo: 0,
-    redPacketTitle: '恭喜发财，大吉大利'
+    redPacketTitle: '恭喜发财，大吉大利',
+    groupName:'',
+    showGroupName:'',
+    footerViewClass:''
   },
 
   onLoad: function (option) {
     this.setMember();
     this.setStorageData();
 
-    wx.setNavigationBarTitle({ title: "小程序交流群" });
     wx.setNavigationBarColor({
       frontColor: '#000000',
       backgroundColor: '#EDEDED',
@@ -68,16 +71,24 @@ Page({
     })
   },
 
-  onUserCaptureScreen: function () {
-    console.log("截屏了");
+  hiddenFooterView:function(){
+    if (this.data.showGroupMember==true){
+      this.setData({ showGroupMember: false})
+    }else{
+      this.setData({ showOperate: false, footerViewClass: '' })
+    }
+  },
+
+  test:function(){
+
   },
 
   /**
    * 清空缓存
    */
   clearChat: function () {
-    wx.removeStorageSync('single_member');
-    wx.removeStorageSync('single_chat');
+    wx.removeStorageSync('group_member');
+    wx.removeStorageSync('group_chat');
     this.setData({
       rightUser: { nickname: '', avatar: '' },
       hiddenRightInput: false,
@@ -91,7 +102,7 @@ Page({
    * 根据缓存加载数据
    */
   setStorageData: function () {
-    let data = wx.getStorageSync('single_chat');
+    let data = wx.getStorageSync('group_chat');
     console.log(data);
     if (data != '' && data != undefined && data.length > 0) {
       this.setData({ chatList: data })
@@ -124,7 +135,7 @@ Page({
   },
 
   operate: function () {
-    this.setData({ showOperate: true })
+    this.setData({ showOperate: true, footerViewClass:'footer-full' })
   },
 
   /**
@@ -133,8 +144,13 @@ Page({
   hiddenOperate: function () {
     console.log("test");
     this.setData({
-      showOperate: false
+      showOperate: false,
+      showGroupMember:false,
     });
+  },
+
+  showMemberGroupView:function(){
+    this.setData({showGroupMember:true});
   },
 
   /**
@@ -208,10 +224,23 @@ Page({
           this.setData({ rightUser: user })
         }
 
-        wx.setStorageSync('single_member', { 'left': this.data.leftUser, 'right': this.data.right });
+        wx.setStorageSync('group_member', { 'left': this.data.leftUser, 'right': this.data.right });
       }
     })
 
+  },
+
+  addGroupMember:function(){
+    let users = this.data.leftUser;
+    users.push({ id: users.length+1, nickname: '', avatar: '', showInput: true, select: false });
+    this.setData({leftUser:users});
+    wx.setStorageSync('group_member', { 'left': this.data.leftUser, 'right': this.data.right });
+  },
+
+  getGroupname:function(e){
+    let value = e.detail.value;
+    this.setData({groupName:value});
+    wx.setNavigationBarTitle({ title: value });
   },
 
   /**
@@ -238,6 +267,14 @@ Page({
     }
   },
 
+  showGroupNameInput:function(e){
+    this.setData({ showGroupName: false })
+  },
+
+  loseGrouNameCous:function(e){
+    this.setData({ showGroupName:true})
+  },
+
   /**
    * 添加聊天成员输入框失去焦点
    */
@@ -259,7 +296,7 @@ Page({
       this.setData({ hiddenRightInput: true })
     }
 
-    wx.setStorageSync('single_member', { 'left': this.data.leftUser, 'right': this.data.right });
+    wx.setStorageSync('group_member', { 'left': this.data.leftUser, 'right': this.data.right });
   },
 
   /**
@@ -341,26 +378,52 @@ Page({
     this.setData({ redPacketTitle: value });
   },
 
+  getPushUser:function(){
+    let user = this.data.leftUser;
+    if (this.data.selectUser == 0) {
+      user = this.data.rightUser;
+    } else {
+      this.data.leftUser.map(item => {
+        if (this.data.selectUser == item.id) {
+          user = item;
+        }
+        return item;
+      })
+    }
+
+    return user;
+  },
+
+  getMessageType:function(){
+    return this.data.selectUser==0?1:0;
+  },
+
   /**
    * 添加消息
    */
   pushMessage: function (e) {
-    let user = this.data.leftUser;
-    if (this.data.selectUser == 1) {
-      user = this.data.rightUser;
-    }
+    let user = this.getPushUser();
 
     let type = this.data.messageType;
     let chatData = this.data.chatList;
     let template = {
-      data_type: this.data.selectUser,
-      user: { nickname: '', avatar: '' },
+      data_type: this.getMessageType(),
+      user: { nickname: '', avatar: '',id:''},
       message: { type: 1, content: '', attachment: '' }
     };
+
+    if(user.nickname=='' || user.avatar == ''){
+      wx.showToast({
+        title: '所选群成员的昵称或头像不能为空',
+        icon:'none'
+      })
+      return false;
+    }
 
     template.message.type = type;
     template.user.nickname = user.nickname;
     template.user.avatar = user.avatar;
+    template.user.id = user.id;
 
     switch (parseInt(type)) {
       case TXT:
@@ -374,17 +437,34 @@ Page({
       case RECEIVED_RED_PACKET:
         let receiveUser = this.data.selectReceiveUser;
         template.message.content = this.data.redPacketTitle;
-        template.message.attachment = receiveUser == 0 ? this.data.leftUser.nickname : this.data.rightUser.nickname;
+        let receiveUserInfo = '';
+        if(receiveUser == 0){
+          receiveUserInfo = this.data.rightUser;
+        }else{
+          this.data.leftUser.map(item=>{
+            if(item.id == receiveUser){
+              receiveUserInfo = item;
+            }
+            return item;
+          })
+        }
+        template.message.attachment = receiveUserInfo.nickname
         chatData.push(template);
         break;
       case TRANSFER_AMOUNT:
-        let content = '';
+        let _receiveUserInfo = '';
         if (this.data.getTransferAmountTo == 0) {
-          content = '转账给' + this.data.leftUser.nickname;
+          _receiveUserInfo = this.data.rightUser;
         } else {
-          content = '转账给' + this.data.rightUser.nickname;
+          this.data.leftUser.map(item => {
+            if (item.id == this.data.getTransferAmountTo) {
+              _receiveUserInfo = item;
+            }
+            return item;
+          })
         }
-        template.message.content = content;
+
+        template.message.content = '转账给' + _receiveUserInfo.nickname;
         template.message.attachment = this.data.transferAmount;
         chatData.push(template);
         break;
@@ -396,7 +476,7 @@ Page({
     }
 
     this.setData({ chatList: chatData, showCreateView: false, showOperate: false });
-    wx.setStorageSync('single_chat', chatData);
+    wx.setStorageSync('group_chat', chatData);
     wx.showToast({
       title: '添加成功',
       icon: 'none'
@@ -407,6 +487,16 @@ Page({
    * 添加图片
    */
   uploadImage: function () {
+
+    let user = this.getPushUser();
+    if (user.nickname == '' || user.avatar == '') {
+      wx.showToast({
+        title: '所选群成员的昵称或头像不能为空',
+        icon: 'none'
+      })
+      return false;
+    }
+
     wx.chooseImage({
       count: 9, // 默认9
       sizeType: ['original', 'compressed'],
@@ -418,26 +508,22 @@ Page({
 
         filePaths.map(item => {
           let template = {
-            data_type: this.data.selectUser,
-            user: { nickname: '', avatar: '' },
+            data_type: this.getMessageType(),
+            user: { nickname: '', avatar: '' ,id:''},
             message: { type: 1, content: '' }
           };
-
-          let user = this.data.leftUser;
-          if (this.data.selectUser == 1) {
-            user = this.data.rightUser;
-          }
 
           template.type = this.data.selectUser;
           template.message.type = IMG;
           template.message.content = item;
           template.user.nickname = user.nickname;
           template.user.avatar = user.avatar;
+          template.user.id = this.data.selectUser;
           chatData.push(template);
         })
 
         this.setData({ chatList: chatData, showCreateView: false, showOperate: false });
-        wx.setStorageSync('single_chat', chatData);
+        wx.setStorageSync('group_chat', chatData);
         setTimeout(res => {
           wx.pageScrollTo({
             scrollTop: this.data.scrollTop += 1000
@@ -452,7 +538,34 @@ Page({
    */
   selectChatUser: function (e) {
     let type = e.currentTarget.dataset.type;
-    this.setData({ selectUser: type })
+    let id = e.currentTarget.dataset.id;
+    if(type == 1){
+      let rightUser = this.data.rightUser;
+      rightUser.select = true;
+      let groupUsers = this.data.leftUser;
+      groupUsers.map(item => {
+        if (item.id == id) {
+          item.select = true;
+        } else {
+          item.select = false;
+        }
+        return item;
+      })
+      this.setData({ rightUser: rightUser, leftUser: groupUsers, selectUser:0})
+    }else{
+      let groupUsers = this.data.leftUser;
+      groupUsers.map(item=>{
+        if(item.id == id){
+          item.select = true;
+        }else{
+          item.select = false;
+        }
+        return item;
+      })
+      let rightUser = this.data.rightUser;
+      rightUser.select = false;
+      this.setData({ leftUser: groupUsers, rightUser: rightUser, selectUser:id});
+    }
   },
 
   /**

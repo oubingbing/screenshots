@@ -253,11 +253,18 @@ page{
   align-items: center;
 }
 
+.footer-full{
+  height: 100%;
+  justify-content: flex-end;
+  background:rgba(2,2,2,0);
+}
+
 .footer-content{
   width: 100%;
   height: 120rpx;
   display: flex;
   flex-direction: row;
+  background: #F7F7F7;
 }
 
 .sound-icon{
@@ -312,6 +319,7 @@ page{
   border-top-style:solid;
   border-width:1rpx;
   border-color: gainsboro;
+  background: #F7F7F7;
 }
 
 .operate-content{
@@ -358,17 +366,28 @@ page{
 /** 聊天成员设置 **/
 .chat-members{
   width: 100%;
+  height: 700rpx;
   display: flex;
   flex-direction: column;
   border-top-style:solid;
   border-width:1rpx;
   border-color: gainsboro;
   align-items: center;
+  justify-content: flex-end;
   padding: 20rpx 0rpx;
   position: fixed;
-  height: 100%;
   z-index: 200;
-  background: #F7F7F7;
+ background: #F7F7F7;
+}
+
+.group-name{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-size: 30rpx;
+  padding: 20rpx 0rpx;
+  align-items: center;
+  justify-content: center;
 }
 
 .member{
@@ -377,6 +396,7 @@ page{
   flex-direction: column;
   height: 100%;
   background: #F7F7F7;
+  overflow:scroll;
 }
 
 .title{
@@ -414,6 +434,7 @@ page{
   width: 100%;
   display: flex;
   flex-direction: row;
+  margin-bottom: 30rpx;
 }
 
 .select-group-member{
@@ -525,7 +546,9 @@ page{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 50rpx;
+  overflow: scroll;
 }
 
 .create-text{
@@ -554,6 +577,9 @@ page{
   padding-top: 25rpx;
   padding-bottom: 25rpx;
   border-radius: 10rpx;
+  position: fixed;
+  z-index: 120;
+  bottom: 50rpx;
   text-align: center;
 }
 
@@ -595,17 +621,16 @@ page{
 /** 领取红包 **/
 .receive-redpacket{
   width: 85%;
-  height: 300rpx;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  
 }
 
 .receive-redpacket textarea{
   width: 100%;
-  height: 60%;
+  height: 20%;
   font-size: 30rpx;
   background: #EDEDED;
   border-radius: 10rpx;
@@ -613,12 +638,14 @@ page{
 
 .receive-man{
   width: 100%;
+  height: 50%;
   display: flex;
   flex-direction: row;
-  margin-top: 100rpx;
-  height: 40%;
+  margin-top: 50rpx;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  overflow: scroll;
 }
 
 receive-man .receive-avatar{
@@ -637,6 +664,7 @@ receive-man .receive-avatar{
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  padding: 10rpx 0rpx;
 }
 
 .right-content-item-receive-rp{
