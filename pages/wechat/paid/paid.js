@@ -1,30 +1,18 @@
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     avatar:'',
     nickname:'',
-    amount:'',
-    title:'恭喜发财，大吉大利',
+    amount: '',
     showNickname:false,
-    showTitle:true,
-    showAmount:false
+    showAmount: false
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-    wx.setNavigationBarColor({
-      frontColor: '#ffffff',
-      backgroundColor: '#F35543'
-    })
+
   },
 
-  selectAvatar:function(){
+  selectAvatar: function () {
     wx.chooseImage({
       count: 0, // 默认9
       sizeType: ['original', 'compressed'],
@@ -32,44 +20,27 @@ Page({
       success: res => {
 
         var filePaths = res.tempFilePaths;
-        this.setData({avatar:filePaths[0]})
-        
+        this.setData({ avatar: filePaths[0] })
+
       }
     })
   },
 
   getNickname:function(e){
     let value = e.detail.value;
-    this.setData({nickname:value})
+    this.setData({ nickname: value })
   },
 
   loseNicknameCous: function (e) {
     let value = e.detail.value;
-    if (value == ''){
+    if (value == '') {
       return false;
     }
     this.setData({ showNickname: true })
   },
 
-  hiddenNickname:function(){
+  showNicknameInput:function(){
     this.setData({ showNickname: false })
-  },
-
-  getTitle: function (e) {
-    let value = e.detail.value;
-    this.setData({ title: value })
-  },
-
-  loseTitleCous: function (e) {
-    let value = e.detail.value;
-    if (value == '') {
-      return false;
-    }
-    this.setData({ showTitle: true })
-  },
-
-  hiddenTitle: function () {
-    this.setData({ showTitle: false })
   },
 
   getAmount: function (e) {

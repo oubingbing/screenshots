@@ -41,6 +41,15 @@
               <image class='direct-icon' src='/images/turn-right.png'></image>
             </view>
           </view>
+          <view class='service-item' bindtap='wechatNavigate' data-url='/pages/wechat/paid/paid'>
+            <view class='item-icon'>
+              <image class='service-icon' src='/images/wechat-pay-logo.png'></image>
+              <view class='service-title'>支付截图</view>
+            </view>
+            <view class='direct'>
+              <image class='direct-icon' src='/images/turn-right.png'></image>
+            </view>
+          </view>
           <view class='service-item' bindtap='wechatNavigate' data-url='/pages/common/course/course'>
             <view class='item-icon'>
               <image class='service-icon' src='/images/teach.png'></image>

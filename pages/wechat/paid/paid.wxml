@@ -1,0 +1,43 @@
+<view class="paid-container">
+  <view class='paid-content'>
+    <view class='paid-logo'>
+      <image src='/images/wechat-pay-logo.png'></image>
+      <view>支付成功</view>
+    </view>
+    <view class='amount-content'>
+      <view class='amount-label'>￥</view>
+      <view class='amount' wx:if="{{showAmount==true}}" bindtap='hiddenAmount'>{{amount}}</view>
+      <input type='text' 
+            class='nickname-input'
+                 wx:if="{{showAmount==false}}"
+                 value='{{amount}}'
+                 placeholder="设置金额"
+                 bindblur="loseAmountCous" 
+                 auto-focus         
+                 bindinput='getAmount'/>
+    </view>
+    <view class='receive-title'>收款方</view>
+    <view class='userinfo'>
+      <view class='avatar'>
+        <image class="{{avatar==''?'normal-img':'cicle-img'}}"
+               bindtap='selectAvatar'
+               mode='aspectFill' 
+               src="{{avatar==''?'/images/select-image.png':avatar}}"></image>
+      </view>
+      <view class='nickname'>
+        <view wx:if="{{showNickname==true}}" bindtap='showNicknameInput'>{{nickname}}</view>
+        <input type='text' 
+                 class='nickname-input'
+                 wx:if="{{showNickname==false}}"
+                 value='{{nickname}}'
+                 placeholder="设置昵称"
+                 bindblur="loseNicknameCous" 
+                 auto-focus         
+                 bindinput='getNickname'/>
+      </view>
+    </view>
+  </view>
+  <view class='finish-button'>
+    <view class='button'>完成</view>
+  </view>
+</view>
