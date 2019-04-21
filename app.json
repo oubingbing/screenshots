@@ -4,7 +4,8 @@
     "pages/wechat/single_chat/single_chat",
     "pages/wechat/group_chat/group_chat",
     "pages/wechat/redpacket/redpacket",
-    "pages/common/edit_screen/edit_screen"
+    "pages/common/edit_screen/edit_screen",
+    "pages/common/course/course"
   ],
   "window": {
     "backgroundTextStyle": "light",

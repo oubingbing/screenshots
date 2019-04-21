@@ -1,4 +1,7 @@
-// pages/home/index/index.js
+const http = require("./../../../utils/http.js");
+const util = require("./../../../utils/util.js");
+const app = getApp();
+
 Page({
 
   /**
@@ -42,6 +45,10 @@ Page({
       showAuth: false
     });
     wx.setStorageSync('user',data.detail.userInfo);
+    http.login(null, null, null, res => {
+      //获取商品列表
+      this.getGoods();
+    });
   },
 
   wechatNavigate:function(e){

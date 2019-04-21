@@ -139,17 +139,23 @@ Page({
  */
   hiddenOperate: function () {
     console.log("test");
+    return false;
     this.setData({
       showOperate: false
     });
   },
 
   hiddenFooterView: function () {
+    console.log("test");
     if (this.data.showGroupMember == true) {
       this.setData({ showGroupMember: false })
     } else {
       this.setData({ showOperate: false, footerViewClass: '' })
     }
+  },
+
+  test: function () {
+
   },
 
   /**
@@ -209,7 +215,8 @@ Page({
           this.setData({ rightUser: user })
         }
 
-        wx.setStorageSync('single_member', { 'left': this.data.leftUser, 'right': this.data.right });
+        wx.setStorageSync('single_member', { 'left': this.data.leftUser, 'right': this.data.rightUser });
+        console.log(wx.getStorageInfoSync('single_member'));
       }
     })
 

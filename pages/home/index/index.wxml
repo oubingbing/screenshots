@@ -13,20 +13,6 @@
     <view class='body-content'>
       <view class='content'>
 
-       <!--> <view class='content-item' data-url='/pages/wechat/single_chat/single_chat' bindtap='wechatNavigate'>
-          <view class='item wechat-single'>
-            <image src='/images/wx_log.png'></image>
-            <view class='label'>单人截图</view>
-          </view>
-        </view>
-
-        <view class='content-item' data-url='/pages/wechat/group_chat/group_chat' bindtap='wechatNavigate'>
-          <view class='item wechat-single'>
-            <image src='/images/wx-group.png'></image>
-            <view class='label'>群聊截图</view>
-          </view>
-        </view>-->
-
         <view class='service-content'>
           <view class='service-item' data-url='/pages/wechat/single_chat/single_chat' bindtap='wechatNavigate'>
             <view class='item-icon'>
@@ -37,7 +23,7 @@
               <image class='direct-icon' src='/images/turn-right.png'></image>
             </view>
           </view>
-          <view class='service-item' data-url='/pages/wechat/single_chat/single_chat' bindtap='wechatNavigate'>
+          <view class='service-item' data-url='/pages/wechat/group_chat/group_chat' bindtap='wechatNavigate'>
             <view class='item-icon'>
               <image class='service-icon' src='/images/group-logo.png'></image>
               <view class='service-title'>群聊截图</view>
@@ -49,7 +35,16 @@
           <view class='service-item' bindtap='wechatNavigate' data-url='/pages/wechat/redpacket/redpacket'>
             <view class='item-icon'>
               <image class='service-icon' src='/images/rp.png'></image>
-              <view class='service-title'>红包</view>
+              <view class='service-title'>红包截图</view>
+            </view>
+            <view class='direct'>
+              <image class='direct-icon' src='/images/turn-right.png'></image>
+            </view>
+          </view>
+          <view class='service-item' bindtap='wechatNavigate' data-url='/pages/common/course/course'>
+            <view class='item-icon'>
+              <image class='service-icon' src='/images/teach.png'></image>
+              <view class='service-title'>使用教程</view>
             </view>
             <view class='direct'>
               <image class='direct-icon' src='/images/turn-right.png'></image>

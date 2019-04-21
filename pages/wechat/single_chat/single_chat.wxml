@@ -91,7 +91,7 @@
                 <view class='right-content-item-red right-content-item-receive-rp'>
                   <view class='red-content'>
                     <view class='red-packet-image'>
-                      <image src='/images/receive-amount.png'></image>
+                      <image style='width:80rpx;height:80rpx;' src='/images/receive-amount.png'></image>
                     </view>
                     <view class='red-packet-world'>
                       <view>{{item.message.content}}</view>
@@ -186,7 +186,7 @@
                 <view class='right-content-item-red right-content-item-receive-rp'>
                   <view class='red-content'>
                     <view class='red-packet-image'>
-                      <image src='/images/receive-amount.png'></image>
+                      <image style='width:80rpx;height:80rpx;' src='/images/receive-amount.png'></image>
                     </view>
                     <view class='red-packet-world'>
                       <view>{{item.message.content}}</view>
@@ -224,7 +224,7 @@
     </view>
 
     <!-- 添加成员 -->
-    <view class='chat-members' wx:if="{{showOperate}}">
+    <view class='chat-members' wx:if="{{showOperate}}" catchtap='test'>
       <view class='member'>
         <view class='title'>添加聊天成员</view>
         <view class='member-content'>
@@ -295,7 +295,7 @@
     </view>
 
     <!-- 添加消息内容 -->
-    <view class='operate-container' wx:if="{{showOperate}}">
+    <view class='operate-container' wx:if="{{showOperate}}" catchtap='test'>
       <view class='operate-content'>
 
         <view class='operate-item' catchtap='showCreateView' data-type='1'>

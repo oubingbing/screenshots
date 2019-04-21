@@ -45,6 +45,16 @@ page{
   border-radius: 10rpx;
 }
 
+.leftusername{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+  padding-bottom: 10rpx;
+  padding-left: 20rpx;
+  color: darkgray;
+}
+
 .left-content{
   display: flex;
   flex-direction: column;

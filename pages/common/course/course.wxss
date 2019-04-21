@@ -1,0 +1,32 @@
+.course-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-content{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50rpx;
+}
+
+.section{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+  padding: 10rpx 0rpx;
+}
+
+.title{
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.section image{
+  width: 40%;
+  margin-top: 20rpx;
+}

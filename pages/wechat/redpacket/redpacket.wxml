@@ -3,13 +3,36 @@
     <view class='header'>
       <view class='header-content'>
         <view class="userinfo">
-          <image src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIRSkNHofic4wB9oyZrFBybUGjozW4DKtGJYWTWORATffxUtFLt1Cm3ibP0YVtfRicERVhsSickhgZic2w/132'></image>
-          <view class='nickname'>叶子</view>
+          <image bindtap='selectAvatar' src="{{avatar==''?'/images/redpacket-select.png':avatar}}" mode='aspectFill'></image>
+          <view class='nickname' wx:if="{{showNickname==true}}" catchtap='hiddenNickname'>{{nickname}}的红包</view>
+          <input type='text' 
+                 class='nickname-input'
+                 wx:if="{{showNickname==false}}"
+                 value='{{nickname}}'
+                 placeholder="设置昵称"
+                 bindblur="loseNicknameCous" 
+                 auto-focus         
+                 bindinput='getNickname'/>
         </view>
-        <view class='title'>恭喜发财，大吉大利</view>
+        <view class='title' wx:if="{{showTitle==true}}" bindtap='hiddenTitle'>{{title}}</view>
+        <input type='text' 
+                 class='nickname-input'
+                 wx:if="{{showTitle==false}}"
+                 value='{{title}}'
+                 placeholder="设置祝福语"
+                 bindblur="loseTitleCous"          
+                 bindinput='getTitle'/>
         <view class='amount-content'>
           <view class='amount-label'>￥</view>
-          <view class='amount'>100</view>
+          <view class='amount' wx:if="{{showAmount==true}}" bindtap='hiddenAmount'>{{amount}}</view>
+          <input type='text' 
+                 class='nickname-input'
+                 wx:if="{{showAmount==false}}"
+                 value='{{amount}}'
+                 placeholder="设置金额"
+                 bindblur="loseAmountCous" 
+                 auto-focus         
+                 bindinput='getAmount'/>
         </view>
         <view class='tips-content'>
           <view>已存入零钱，可直接体现</view>

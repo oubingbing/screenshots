@@ -1,11 +1,18 @@
-// pages/wechat/redpacket/redpacket.js
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    avatar:'',
+    nickname:'',
+    amount:'',
+    amount:'',
+    title:'恭喜发财，大吉大利',
+    showNickname:false,
+    showTitle:true,
+    showAmount:false
   },
 
   /**
@@ -18,52 +25,68 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  selectAvatar:function(){
+    wx.chooseImage({
+      count: 0, // 默认9
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: res => {
 
+        var filePaths = res.tempFilePaths;
+        this.setData({avatar:filePaths[0]})
+        
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  getNickname:function(e){
+    let value = e.detail.value;
+    this.setData({nickname:value})
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  loseNicknameCous: function (e) {
+    let value = e.detail.value;
+    if (value == ''){
+      return false;
+    }
+    this.setData({ showNickname: true })
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  hiddenNickname:function(){
+    this.setData({ showNickname: false })
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  getTitle: function (e) {
+    let value = e.detail.value;
+    this.setData({ title: value })
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  loseTitleCous: function (e) {
+    let value = e.detail.value;
+    if (value == '') {
+      return false;
+    }
+    this.setData({ showTitle: true })
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  hiddenTitle: function () {
+    this.setData({ showTitle: false })
+  },
 
+  getAmount: function (e) {
+    let value = e.detail.value;
+    this.setData({ amount: value })
+  },
+
+  loseAmountCous: function (e) {
+    let value = e.detail.value;
+    if (value == '') {
+      return false;
+    }
+    this.setData({ showAmount: true })
+  },
+
+  hiddenAmount: function () {
+    this.setData({ showAmount: false })
   }
 })

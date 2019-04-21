@@ -684,7 +684,7 @@ receive-man .receive-avatar{
 }
 
 .receive-world{
-  font-size: 22rpx;
+  font-size: 30rpx;
 }
 
 .amount-input{

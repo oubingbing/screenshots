@@ -166,3 +166,16 @@
   height: 50rpx;
   margin-right: 10rpx;
 }
+
+.teach-title{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30rpx;
+}
+
+.teach-content{
+  width: 90%;
+}

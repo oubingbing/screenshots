@@ -1,0 +1,36 @@
+<view class="course-container">
+  <view class='course-content'>
+    <view class='section'>
+      恶搞截图是一款可以生成聊天或者红包等截图的小程序，用于娱乐生活，恶搞人生。您需要根据自己的需求编辑截图，然后自行截屏，然后根据系统提示完善截图。
+    </view>
+    <view class='section'>
+      <view class='title'>单聊截图</view>
+      <view>1.点击聊天输入框</view>
+      <view>2设置聊天成员（点击头像或者昵称即可编辑）</view>
+      <view>3.勾选需要发送信息的一方</view>
+      <view>4.点击你需要的功能，添加文字、图片、红包或者转账的信息，然后截屏即可</view>
+      <view>5.点击情况数据就能清掉所有聊天信息重新开始了</view>
+      <image src='/images/single-chat-pic.jpg' bindtap='previewImage' data-id='/images/single-chat-pic.jpg'></image>
+    </view>
+    <view class='section'>
+      <view class='title'>群聊截图</view>
+      <view>1.点击聊天输入框</view>
+      <view>2.选择群成员设置</view>
+      <view>3.填写群名称</view>
+      <view>4.添加群成员，点击继续添加群成员添加</view>
+      <view>5.点击聊天输入框》设置聊天成员（点击头像或者昵称即可编辑）</view>
+      <view>6.勾选需要发送信息的一方</view>
+      <view>7.点击你需要的功能，添加文字、图片、红包或者转账的信息，然后截屏即可</view>
+      <view>8.点击情况数据就能清掉所有聊天信息重新开始了</view>
+      <image src='/images/group-chat-pic.jpg' bindtap='previewImage' data-id='/images/group-chat-pic.jpg'></image>
+    </view>
+    <view class='section'>
+      <view class='title'>红包截图</view>
+      <view>1.点击头像选择头像</view>
+      <view>2.输入昵称</view>
+      <view>3.点击祝福语可编辑（恭喜发财，大吉大利）</view>
+      <view>4.输入红包金额</view>
+      <image src='/images/redpacket-pic.jpg' bindtap='previewImage' data-id='/images/redpacket-pic.jpg'></image>
+    </view>
+  </view>
+</view>
