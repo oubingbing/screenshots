@@ -58,4 +58,20 @@ Page({
     })
   },
 
+  /**
+ * 分享
+ */
+  onShareAppMessage: function (res) {
+    return {
+      title: '一款生成微信聊天，红包等截图的好用工具',
+      path: '/pages/home/index/index',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
+
 })

@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 3,
 			"list": [
 				{
 					"id": 2,
@@ -56,7 +56,7 @@
 					"id": 3,
 					"name": "编辑截图",
 					"pathName": "pages/common/edit_screen/edit_screen",
-					"query": "",
+					"query": "type=1",
 					"scene": null
 				},
 				{
@@ -91,6 +91,7 @@
 					"id": -1,
 					"name": "支付截图",
 					"pathName": "pages/wechat/paid/paid",
+					"query": "",
 					"scene": null
 				}
 			]

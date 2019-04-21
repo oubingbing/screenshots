@@ -13,22 +13,6 @@ const RECEIVED_RED_PACKET = 6;
 const TRANSFER_AMOUNT = 7;
 const RECEIVE_TRANSFER_AMOUNT = 8;
 
-wx.onUserCaptureScreen(function (res) {
-  wx.showModal({
-    title: '系统提示',
-    content: '需要对截图进行优化处理，使得截图更加真实',
-    success(res) {
-      if (res.confirm) {
-        wx.navigateTo({
-          url: '/pages/common/edit_screen/edit_screen'
-        })
-      } else if (res.cancel) {
-        console.log('用户点击取消')
-      }
-    }
-  })
-})
-
 Page({
   data: {
 
@@ -58,11 +42,14 @@ Page({
   },
 
   onLoad: function (option) {
-
-    wx.setNavigationBarTitle({ title: this.data.groupName });
+    let groupName = wx.getStorageSync('group_name');
+    if(groupName != '' && groupName != undefined){
+      wx.setNavigationBarTitle({ title: groupName });
+    }
 
     this.setMember();
     this.setStorageData();
+    this.onScreen();
 
     wx.setNavigationBarColor({
       frontColor: '#000000',
@@ -78,6 +65,24 @@ Page({
         scrollTop: this.data.scrollTop += 1000
       })
     }, 500);
+  },
+
+  onScreen: function () {
+    wx.onUserCaptureScreen(function (res) {
+      wx.showModal({
+        title: '系统提示',
+        content: '需要对截图进行优化处理，使得截图更加真实',
+        success(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/common/edit_screen/edit_screen?type=1'
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    })
   },
 
   hiddenFooterView:function(){
@@ -98,6 +103,7 @@ Page({
   clearChat: function () {
     wx.removeStorageSync('group_member');
     wx.removeStorageSync('group_chat');
+    wx.removeStorageSync('group_name');
     this.setData({
       rightUser: { nickname: '', avatar: '' },
       hiddenRightInput: false,
@@ -250,6 +256,7 @@ Page({
     let value = e.detail.value;
     this.setData({groupName:value});
     wx.setNavigationBarTitle({ title: value });
+    wx.setStorageSync('group_name',value);
   },
 
   /**
@@ -313,8 +320,22 @@ Page({
    */
   showInputView: function (e) {
     let type = e.currentTarget.dataset.type;
+    let userid = e.currentTarget.dataset.userid;
+    console.log(userid);
     if (type == 0) {
-      this.setData({ hiddenLeftInput: false, leftValue: this.data.leftUser.nickname })
+      console.log(this.data.leftUser);
+      let leftUser = this.data.leftUser;
+      let user = '';
+      leftUser.map(item=>{
+        if(item.id == userid){
+          user = item;
+          item.showInput=true;
+        }else{
+          item.showInput = false;
+        }
+        return item;
+      })
+      this.setData({ hiddenLeftInput: false, leftValue: user.nickname, leftUser: leftUser })
     } else {
       this.setData({ hiddenRightInput: false, rightValue: this.data.rightUser.nickname })
     }
@@ -466,12 +487,7 @@ Page({
         if(receiveUser == 0){
           receiveUserInfo = this.data.rightUser;
         }else{
-          this.data.leftUser.map(item=>{
-            if(item.id == receiveUser){
-              receiveUserInfo = item;
-            }
-            return item;
-          })
+          receiveUserInfo = user;
         }
         template.message.attachment = receiveUserInfo.nickname
         chatData.push(template);
@@ -628,5 +644,20 @@ Page({
    */
   getTransferAmount: function (e) {
     this.setData({ transferAmount: e.detail.value })
-  }
+  },
+  /**
+* 分享
+*/
+  onShareAppMessage: function (res) {
+    return {
+      title: '一款生成微信聊天，红包等截图的好用工具',
+      path: '/pages/home/index/index',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
 })

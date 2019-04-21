@@ -2,7 +2,83 @@ import Poster from '../../../components/canves/poster/poster';
 
 
 let posterConfig = {
-  jdConfig: {
+  defaultConfig: {
+    width: 750,
+    height: 1334,
+    backgroundColor: '#fff',
+    debug: false,
+    images: [
+      {
+        width: 750,
+        height: 1334,
+        x: 0,
+        y: 0,
+        url: 'https://lc-I0j7ktVK.cn-n1.lcfile.com/02bb99132352b5b5dcea.jpg',
+      },
+      {
+        width: 40,
+        height: 40,
+        x: 670,
+        y: 70,
+        url: '/images/wechat-more.png',
+      }
+    ]
+
+  },
+
+  redpacketConfig: {
+    width: 750,
+    height: 1334,
+    backgroundColor: '#fff',
+    debug: false,
+    blocks: [
+      {
+        width: 250,
+        height: 100,
+        x: 500,
+        y: 35,
+        backgroundColor: '#F35543',
+      }
+    ],
+    images: [
+      {
+        width: 750,
+        height: 1334,
+        x: 0,
+        y: 0,
+        url: 'https://lc-I0j7ktVK.cn-n1.lcfile.com/02bb99132352b5b5dcea.jpg',
+      }
+    ]
+
+  },
+
+  paidConfig: {
+    width: 750,
+    height: 1334,
+    backgroundColor: '#fff',
+    debug: false,
+    blocks: [
+      {
+        width: 750,
+        height: 150,
+        x: 0,
+        y: 0,
+        backgroundColor: 'white',
+      }
+    ],
+    images: [
+      {
+        width: 750,
+        height: 1334,
+        x: 0,
+        y: 0,
+        url: 'https://lc-I0j7ktVK.cn-n1.lcfile.com/02bb99132352b5b5dcea.jpg',
+      }
+    ]
+
+  },
+  
+  chatConfig: {
     width: 750,
     height: 1334,
     backgroundColor: '#fff',
@@ -42,10 +118,33 @@ Page({
     showCanves: false,
     screenImage: '',
     showImage: false,
+    screeConfig:''
   },
 
   onLoad: function (options) {
-
+    let type = options.type;
+    console.log("类型");
+    console.log(type);
+    let config = '';
+    if(type != '' && type != undefined){
+      switch (parseInt(type)){
+        case 1:
+          config = posterConfig.chatConfig;
+          break;
+        case 2:
+          config = posterConfig.redpacketConfig;
+          break;
+        case 3:
+          config = posterConfig.paidConfig;
+          break;
+        default:
+          config = posterConfig.chatConfig;
+          break;
+      }
+      this.setData({screeConfig:config})
+    }else{
+      this.setData({ screeConfig: posterConfig.defaultConfig})
+    }
   },
 
   selectImage: function () {
@@ -59,9 +158,9 @@ Page({
         })
         this.editSreeb(res.tempFilePaths[0]);
 
-        posterConfig.jdConfig.images[0].url = res.tempFilePaths[0];
+        this.data.screeConfig.images[0].url = res.tempFilePaths[0];
 
-        this.setData({ posterConfig: posterConfig.jdConfig }, () => {
+        this.setData({ posterConfig: this.data.screeConfig }, () => {
           Poster.create(true);    // 入参：true为抹掉重新生成 
         });
 

@@ -13,22 +13,6 @@ const RECEIVED_RED_PACKET = 6;
 const TRANSFER_AMOUNT = 7;
 const RECEIVE_TRANSFER_AMOUNT = 8;
 
-wx.onUserCaptureScreen(function (res) {
-  wx.showModal({
-    title: '系统提示',
-    content: '需要对截图进行优化处理，使得截图更加真实',
-    success(res) {
-      if (res.confirm) {
-        wx.navigateTo({
-          url: '/pages/common/edit_screen/edit_screen'
-        })
-      } else if (res.cancel) {
-        console.log('用户点击取消')
-      }
-    }
-  })
-})
-
 Page({
   data: {
    
@@ -57,6 +41,7 @@ Page({
   onLoad: function (option) {
     this.setMember();
     this.setStorageData();
+    this.onScreen();
 
     wx.setNavigationBarTitle({ title: this.data.leftUser.nickname });
     wx.setNavigationBarColor({
@@ -73,6 +58,24 @@ Page({
         scrollTop: this.data.scrollTop += 1000
       })
     }, 500);
+  },
+
+  onScreen:function(){
+    wx.onUserCaptureScreen(function (res) {
+      wx.showModal({
+        title: '系统提示',
+        content: '需要对截图进行优化处理，使得截图更加真实',
+        success(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/common/edit_screen/edit_screen?type=1'
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    })
   },
 
   onUserCaptureScreen:function(){
@@ -476,5 +479,20 @@ Page({
    */
   getTransferAmount:function(e){
     this.setData({ transferAmount:e.detail.value}) 
-  }
+  },
+  /**
+* 分享
+*/
+  onShareAppMessage: function (res) {
+    return {
+      title: '一款生成微信聊天，红包等截图的好用工具',
+      path: '/pages/home/index/index',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
 })

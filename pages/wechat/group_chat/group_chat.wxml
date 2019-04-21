@@ -268,6 +268,7 @@
                 <view class='member-nickname' 
                       data-type='0'
                       catchtap='showInputView'
+                      data-userid='{{item.id}}'
                       wx:if="{{item.showInput==false}}">{{item.nickname}}</view>
               </view>
             </view>
