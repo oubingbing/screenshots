@@ -44,7 +44,7 @@ Page({
   onLoad: function (option) {
     let groupName = wx.getStorageSync('group_name');
     if(groupName != '' && groupName != undefined){
-      wx.setNavigationBarTitle({ title: groupName });
+      this.setData({ groupName: groupName, showGroupName:true });
     }
 
     this.setMember();
