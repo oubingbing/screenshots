@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 9,
 			"list": [
 				{
 					"id": 2,
@@ -92,6 +92,12 @@
 					"name": "支付截图",
 					"pathName": "pages/wechat/paid/paid",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "钱包截图",
+					"pathName": "pages/wechat/wallet/wallet",
 					"scene": null
 				}
 			]

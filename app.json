@@ -5,6 +5,7 @@
     "pages/wechat/group_chat/group_chat",
     "pages/wechat/redpacket/redpacket",
     "pages/wechat/paid/paid",
+    "pages/wechat/wallet/wallet",
     "pages/common/edit_screen/edit_screen",
     "pages/common/course/course"
   ],
