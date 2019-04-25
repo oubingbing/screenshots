@@ -50,7 +50,7 @@
               <image class='direct-icon' src='/images/turn-right.png'></image>
             </view>
           </view>
-          <view class='service-item' bindtap='wechatNavigate' data-url='/pages/common/course/course'>
+          <view class='service-item' bindtap='wechatNavigate' data-url='/pages/wechat/wallet/wallet'>
             <view class='item-icon'>
               <image class='service-icon' src='/images/wallet.png'></image>
               <view class='service-title'>钱包截图</view>

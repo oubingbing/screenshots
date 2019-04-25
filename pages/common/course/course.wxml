@@ -4,6 +4,13 @@
       恶搞截图是一款可以生成聊天或者红包等截图的小程序，用于娱乐生活，恶搞人生。您需要根据自己的需求编辑截图，然后自行截屏，然后根据系统提示完善截图。
     </view>
     <view class='section'>
+      <view class='title'>优化截图右上角小程序胶囊</view>
+      <view>微信小程序的右上角的胶囊按钮是无法遮盖的，所以当您截图后需要根据系统提示，上传当前的截图处理掉这个胶囊，以便使得截图更加真实。</view>
+      <image src='/images/dealwith.png' bindtap='previewImage' data-id='/images/dealwith.png'></image>
+      <view>截图后系统会提示需要优化截图，有些手机截图后可能会马上弹出该提示，但有些需要等待两秒左右。</view>
+      <image src='/images/system-tip.jpg' bindtap='previewImage' data-id='/images/system-tip.jpg'></image>
+    </view>
+    <view class='section'>
       <view class='title'>单聊截图</view>
       <view>1.点击聊天输入框</view>
       <view>2设置聊天成员（点击头像或者昵称即可编辑）</view>

@@ -369,17 +369,17 @@ Page({
         chatData.push(template);
         break;
       case RECEIVED_RED_PACKET:
-        let receiveUser = this.data.selectReceiveUser;
+        //let receiveUser = this.data.selectReceiveUser;
         template.message.content = this.data.redPacketTitle;
-        template.message.attachment = receiveUser==0?this.data.leftUser.nickname:this.data.rightUser.nickname;
+        template.message.attachment = user.nickname;
         chatData.push(template);
         break;
       case TRANSFER_AMOUNT:
         let content = '';
-        if (this.data.getTransferAmountTo==0){
-          content = '转账给' + this.data.leftUser.nickname;
-        }else{
+        if (this.data.selectUser==0){
           content = '转账给' + this.data.rightUser.nickname;
+        }else{
+          content = '转账给' + this.data.leftUser.nickname;
         }
         template.message.content = content;
         template.message.attachment = this.data.transferAmount;

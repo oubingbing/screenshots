@@ -109,6 +109,39 @@ let posterConfig = {
       }
     ]
 
+  },
+
+  walletConfig: {
+    width: 750,
+    height: 1334,
+    backgroundColor: '#fff',
+    debug: false,
+    blocks: [
+      {
+        width: 250,
+        height: 100,
+        x: 500,
+        y: 35,
+        backgroundColor: 'white',
+      }
+    ],
+    images: [
+      {
+        width: 750,
+        height: 1334,
+        x: 0,
+        y: 0,
+        url: 'https://lc-I0j7ktVK.cn-n1.lcfile.com/02bb99132352b5b5dcea.jpg',
+      },
+      {
+        width: 40,
+        height: 40,
+        x: 670,
+        y: 70,
+        url: '/images/wechat-more.png',
+      }
+    ]
+
   }
 }
 
@@ -136,6 +169,9 @@ Page({
           break;
         case 3:
           config = posterConfig.paidConfig;
+          break;
+        case 6:
+          config = posterConfig.walletConfig;
           break;
         default:
           config = posterConfig.chatConfig;

@@ -376,28 +376,6 @@
           maxlength="1024"
           value='{{redPacketTitle}}'
           bindinput="getRedTextContent"/>
-        <view class='receive-man'>
-          <view class='left-receive receive-item'>
-            <image class='receive-icon' 
-                   src="{{selectReceiveUser==0?'/images/select-choose.png':'/images/select-icon.png'}}" 
-                   data-type='0' 
-                   catchtap='selectReceiveMan'></image>
-            <image class='receive-avatar'
-                   style='height:80rpx;width:80rpx;'
-                   mode='aspectFill'
-                   src='{{leftUser.avatar}}'></image>
-          </view>
-          <view class='right-receive receive-item'>
-            <image src="{{selectReceiveUser==1?'/images/select-choose.png':'/images/select-icon.png'}}"
-                   class='receive-icon' 
-                   data-type='1' 
-                   catchtap='selectReceiveMan'></image>
-            <image class='receive-avatar'
-                   style='height:80rpx;width:80rpx;'
-                   mode='aspectFill'
-                   src='{{rightUser.avatar}}'></image>
-          </view>
-        </view>
       </view>
 
       <!-- 转账 -->
@@ -409,31 +387,9 @@
           bindinput="getTransferAmount"/>
           <view class='amount-label'>￥</view>
         </view>  
-        <view class='receive-man'>
-          <view class='left-receive receive-item'>
-            <image class='receive-icon' 
-                   src="{{getTransferAmountTo==0?'/images/select-choose.png':'/images/select-icon.png'}}" 
-                   data-type='0' 
-                   catchtap='selectTransferAmountTo'></image>
-            <image class='receive-avatar' 
-                   style='height:80rpx;width:80rpx;'
-                   mode='aspectFill'
-                   src='{{leftUser.avatar}}'></image>
-          </view>
-          <view class='right-receive receive-item'>
-            <image src="{{getTransferAmountTo==1?'/images/select-choose.png':'/images/select-icon.png'}}"
-                   class='receive-icon' 
-                   data-type='1' 
-                   catchtap='selectTransferAmountTo'></image>
-            <image class='receive-avatar' 
-                   style='height:80rpx;width:80rpx;'
-                   mode='aspectFill'
-                   src='{{rightUser.avatar}}'></image>
-          </view>
-        </view>
       </view>
 
-      <!-- 转账 -->
+      <!-- 收款 -->
       <view class='receive-redpacket' wx:if="{{messageType==8}}">
         <view class='amount-input'>
           <input
@@ -442,28 +398,6 @@
           bindinput="getTransferAmount"/>
           <view class='amount-label'>￥</view>
         </view>  
-        <view class='receive-man'>
-          <view class='left-receive receive-item'>
-            <image class='receive-icon' 
-                   src="{{getTransferAmountTo==0?'/images/select-choose.png':'/images/select-icon.png'}}" 
-                   data-type='0' 
-                   catchtap='selectTransferAmountTo'></image>
-            <image class='receive-avatar'
-                   mode='aspectFill'
-                   style='height:80rpx;width:80rpx;'
-                   src='{{leftUser.avatar}}'></image>
-          </view>
-          <view class='right-receive receive-item'>
-            <image src="{{getTransferAmountTo==1?'/images/select-choose.png':'/images/select-icon.png'}}"
-                   class='receive-icon' 
-                   data-type='1' 
-                   catchtap='selectTransferAmountTo'></image>
-            <image class='receive-avatar' 
-                   mode='aspectFill'
-                   style='height:80rpx;width:80rpx;'
-                   src='{{rightUser.avatar}}'></image>
-          </view>
-        </view>
       </view>
 
       <view class='create-button' catchtap='pushMessage'>添加</view>
