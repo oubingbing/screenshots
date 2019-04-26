@@ -103,7 +103,6 @@
               </view>
             </view>
 
-
           </view>
         </view>
       </view>
@@ -210,6 +209,11 @@
         </view>
       </view>
     </block>
+
+    <view class='date-content' wx:if="{{item.data_type==2}}">
+      <view class='date'>{{item.message.content}}</view>
+    </view>
+
   </scroll-view>
 
   <!-- 底部操作输入 -->
@@ -342,6 +346,11 @@
           <view class='item-txt'>添加收款</view>
         </view>
 
+        <view class='operate-item' catchtap='showCreateView' data-type='9'>
+          <view class='image-wall'><image src='/images/date-icon.png'></image></view>
+          <view class='item-txt'>时间日期</view>
+        </view>
+
         <view class='operate-item' catchtap='clearChat' data-type='8'>
           <view class='image-wall'><image src='/images/clear.png'></image></view>
           <view class='item-txt'>清空聊天</view>
@@ -401,6 +410,16 @@
           placeholder="输入收款金额"    
           bindinput="getTransferAmount"/>
           <view class='amount-label'>￥</view>
+        </view>  
+      </view>
+
+      <!-- 时间日期 -->
+      <view class='receive-redpacket' wx:if="{{messageType==9}}">
+        <view class='amount-input'>
+          <input
+          class='t-amount'
+          placeholder="周二 12:00 或 14:20"    
+          bindinput="getDateTimeString"/>
         </view>  
       </view>
 

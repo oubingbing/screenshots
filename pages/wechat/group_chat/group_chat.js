@@ -12,6 +12,7 @@ const RED_PACKET = 5;
 const RECEIVED_RED_PACKET = 6;
 const TRANSFER_AMOUNT = 7;
 const RECEIVE_TRANSFER_AMOUNT = 8;
+const DATE_TIME = 9;
 
 Page({
   data: {
@@ -43,8 +44,10 @@ Page({
 
   onLoad: function (option) {
     let groupName = wx.getStorageSync('group_name');
+
     if(groupName != '' && groupName != undefined){
       this.setData({ groupName: groupName, showGroupName:true });
+      wx.setNavigationBarTitle({ title: groupName });
     }
 
     this.setMember();
@@ -436,6 +439,11 @@ Page({
     this.setData({ redPacketTitle: value });
   },
 
+  getDateTimeString: function (e) {
+    let value = e.detail.value;
+    this.setData({ dateTimeString: value })
+  },
+
   getPushUser:function(){
     let user = this.data.leftUser;
     if (this.data.selectUser == 0) {
@@ -531,6 +539,12 @@ Page({
         break;
       case RECEIVE_TRANSFER_AMOUNT:
         template.message.content = '已收钱';
+        template.message.attachment = this.data.transferAmount;
+        chatData.push(template);
+        break;
+      case DATE_TIME:
+        template.data_type = 2;//日期
+        template.message.content = this.data.dateTimeString;
         template.message.attachment = this.data.transferAmount;
         chatData.push(template);
         break;

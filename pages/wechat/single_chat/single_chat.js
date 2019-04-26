@@ -12,6 +12,7 @@ const RED_PACKET = 5;
 const RECEIVED_RED_PACKET = 6;
 const TRANSFER_AMOUNT = 7;
 const RECEIVE_TRANSFER_AMOUNT = 8;
+const DATE_TIME = 9;
 
 Page({
   data: {
@@ -35,7 +36,8 @@ Page({
     transferAmount:0,
     getTransferAmountTo:0,
     redPacketTitle:'恭喜发财，大吉大利',
-    footerViewClass: ''
+    footerViewClass: '',
+    dateTimeString:''
   },
 
   onLoad: function (option) {
@@ -244,6 +246,11 @@ Page({
 
   },
 
+  getDateTimeString:function(e){
+    let value = e.detail.value;
+    this.setData({dateTimeString:value})
+  },
+
   /**
    * 获取聊天成员昵称
    */
@@ -406,6 +413,12 @@ Page({
         break;
       case RECEIVE_TRANSFER_AMOUNT:
         template.message.content = '已收钱';
+        template.message.attachment = this.data.transferAmount;
+        chatData.push(template);
+        break;
+      case DATE_TIME:
+        template.data_type = 2;//日期
+        template.message.content = this.data.dateTimeString;
         template.message.attachment = this.data.transferAmount;
         chatData.push(template);
         break;
