@@ -67,6 +67,26 @@ Page({
     }, 500);
   },
 
+  deleteContent: function (e) {
+    let position = e.currentTarget.dataset.id;
+    wx.showModal({
+      content: '确定删除该聊天记录吗',
+      success: res => {
+        if (res.confirm) {
+          let chatData = this.data.chatList;
+          let newChatData = chatData.filter((item, index) => {
+            if (position != index) {
+              return item;
+            }
+          })
+
+          this.setData({ chatList: newChatData });
+          wx.setStorageSync('group_chat', newChatData);
+        }
+      }
+    })
+  },
+
   onScreen: function () {
     wx.onUserCaptureScreen(function (res) {
       wx.showModal({

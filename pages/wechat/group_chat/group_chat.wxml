@@ -16,7 +16,7 @@
           <view class='left-content-avatar'>
             <image mode='aspectFill' src='{{item.user.avatar}}'></image>
           </view>
-          <view class='left-content'>
+          <view class='left-content' bindlongpress='deleteContent' data-id='{{index}}'>
             <view class="leftusername">{{item.user.nickname}}</view>
             <!-- 文字消息 -->
             <view class='left-content-message' wx:if="{{item.message.type==1}}">
@@ -112,8 +112,8 @@
     <block wx:if="{{item.data_type==1}}">
       <view class="scroll-view-item">
         <view class='user-right'>
-          <view class='right-content' bindlongpress="deleteContent">
-            
+          <view class='right-content' bindlongpress='deleteContent' data-id='{{index}}'>
+          
             <!--文字消息 -->
             <view class='right-content-message' wx:if="{{item.message.type==1}}">
               <view class='right-content-item-txt'>{{item.message.content}}</view>
