@@ -56,7 +56,7 @@
   width: 90%;
   display: flex;
   flex-direction: column;
-  margin-top: 100rpx;
+  margin-top: 50rpx;
   font-size: 30rpx;
   box-shadow: 0rpx 0rpx 15rpx 6rpx #EDEDED;
   background: white;
@@ -178,4 +178,19 @@
 
 .teach-content{
   width: 90%;
+}
+
+.ad-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30rpx;
+  margin-bottom: 50rpx;
+}
+
+.ad-content{
+  width: 90%;
+  border-radius: 10rpx;
 }

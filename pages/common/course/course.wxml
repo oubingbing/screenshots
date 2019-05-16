@@ -3,6 +3,30 @@
     <view class='section'>
       恶搞截图是一款可以生成聊天或者红包等截图的小程序，用于娱乐生活，恶搞人生。您需要根据自己的需求编辑截图，然后自行截屏，然后根据系统提示完善截图。
     </view>
+
+    <view class='ad-container'>
+      <view class='ad-content'>
+        <ad unit-id="adunit-e7af2ccfd53b9a3e"></ad>
+      </view>
+    </view>
+
+    <view class='section'>
+      <view class='title'>建议&bug</view>
+      <view>如果您在使用过程中觉得有什么地方需要完善或者觉得需要增加功能的以及发现了bug可以发送邮件或者添加作者微信反馈相应的信息，作者会尽最大的努力去完善的，祝您生活愉快，谢谢。</view>
+      <view class='copy'>
+        <view>邮箱：875307054@qq.com</view>
+        <view class='copy-button' bindtap='copyText' data-text="875307054@qq.com">复制</view>
+      </view>
+      <view class='copy'>
+        <view>微信号：bingbing_ou</view>
+        <view class='copy-button' bindtap='copyText' data-text="bingbing_ou">复制</view>
+      </view>
+    </view>
+
+    <view class='section'>
+      <view style='color:#3CC4A9'>以下为使用教程</view>
+    </view>
+
     <view class='section'>
       <view class='title'>优化截图右上角小程序胶囊</view>
       <view>微信小程序的右上角的胶囊按钮是无法遮盖的，所以当您截图后需要根据系统提示，上传当前的截图处理掉这个胶囊，以便使得截图更加真实。</view>

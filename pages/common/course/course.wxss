@@ -30,3 +30,29 @@
   width: 40%;
   margin-top: 20rpx;
 }
+
+.ad-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 0rpx;
+}
+
+.ad-content{
+  width: 95%;
+  border-radius: 10rpx;
+}
+
+.copy{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.copy-button{
+  color: #3CC4A9;
+  margin-left: 20rpx;
+}

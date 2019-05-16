@@ -62,7 +62,7 @@
           <view class='service-item' bindtap='wechatNavigate' data-url='/pages/common/course/course'>
             <view class='item-icon'>
               <image class='service-icon' src='/images/teach.png'></image>
-              <view class='service-title'>使用教程</view>
+              <view class='service-title'>教程建议</view>
             </view>
             <view class='direct'>
               <image class='direct-icon' src='/images/turn-right.png'></image>
@@ -70,6 +70,12 @@
           </view>
         </view>
 
+      </view>
+    </view>
+
+    <view class='ad-container'>
+      <view class='ad-content'>
+        <ad unit-id="adunit-e7af2ccfd53b9a3e"></ad>
       </view>
     </view>
 
