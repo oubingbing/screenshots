@@ -1,6 +1,5 @@
 import Poster from '../../../components/canves/poster/poster';
 
-
 let posterConfig = {
   defaultConfig: {
     width: 750,
@@ -206,14 +205,6 @@ Page({
 
   onPosterSuccess(e) {
     const { detail } = e;
-
-    //wx.previewImage({
-    //current: detail,
-    //urls: [detail]
-    //})
-
-    //return false;
-
     this.setData({ screenImage: detail, showImage: true });
     return false;
   },

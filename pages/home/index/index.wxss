@@ -56,7 +56,7 @@
   width: 90%;
   display: flex;
   flex-direction: column;
-  margin-top: 50rpx;
+  margin-top: 100rpx;
   font-size: 30rpx;
   box-shadow: 0rpx 0rpx 15rpx 6rpx #EDEDED;
   background: white;

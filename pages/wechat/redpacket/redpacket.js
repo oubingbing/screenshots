@@ -46,8 +46,8 @@ Page({
   },
 
   /**
-* 分享
-*/
+  * 分享
+  */
   onShareAppMessage: function (res) {
     return {
       title: '一款生成微信聊天，红包等截图的好用工具',

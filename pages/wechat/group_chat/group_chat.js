@@ -70,6 +70,9 @@ Page({
     }, 500);
   },
 
+  /**
+   * 删除聊天内容
+   */
   deleteContent: function (e) {
     let position = e.currentTarget.dataset.id;
     wx.showModal({
@@ -90,6 +93,9 @@ Page({
     })
   },
 
+  /**
+   * 监听截屏
+   */
   onScreen: function () {
     wx.onUserCaptureScreen(function (res) {
       wx.showModal({
@@ -108,6 +114,9 @@ Page({
     })
   },
 
+  /**
+   * 隐藏操作栏
+   */
   hiddenFooterView:function(){
     if (this.data.showGroupMember==true){
       this.setData({ showGroupMember: false})
@@ -117,7 +126,7 @@ Page({
   },
 
   test:function(){
-
+    //test
   },
 
   /**
@@ -268,6 +277,9 @@ Page({
 
   },
 
+  /**
+   * 添加群成员
+   */
   addGroupMember:function(){
     let users = this.data.leftUser;
     users.push({ id: users.length+1, nickname: '', avatar: '', showInput: true, select: false });
@@ -275,6 +287,9 @@ Page({
     wx.setStorageSync('group_member', { 'left': this.data.leftUser, 'right': this.data.right });
   },
 
+  /**
+   * 获取群名称
+   */
   getGroupname:function(e){
     let value = e.detail.value;
     this.setData({groupName:value});
@@ -306,6 +321,9 @@ Page({
     }
   },
 
+  /**
+   * 显示群名称输入框
+   */
   showGroupNameInput:function(e){
     this.setData({ showGroupName: false })
   },
@@ -679,9 +697,10 @@ Page({
   getTransferAmount: function (e) {
     this.setData({ transferAmount: e.detail.value })
   },
+  
   /**
-* 分享
-*/
+  * 分享
+  */
   onShareAppMessage: function (res) {
     return {
       title: '一款生成微信聊天，红包等截图的好用工具',

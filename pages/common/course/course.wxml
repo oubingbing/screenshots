@@ -4,21 +4,16 @@
       恶搞截图是一款可以生成聊天或者红包等截图的小程序，用于娱乐生活，恶搞人生。您需要根据自己的需求编辑截图，然后自行截屏，然后根据系统提示完善截图。
     </view>
 
-    <view class='ad-container'>
-      <view class='ad-content'>
-        <ad unit-id="adunit-e7af2ccfd53b9a3e"></ad>
-      </view>
-    </view>
-
+    <!--建议-->
     <view class='section'>
       <view class='title'>建议&bug</view>
       <view>如果您在使用过程中觉得有什么地方需要完善或者觉得需要增加功能的以及发现了bug可以发送邮件或者添加作者微信反馈相应的信息，作者会尽最大的努力去完善的，祝您生活愉快，谢谢。</view>
       <view class='copy'>
-        <view>邮箱：875307054@qq.com</view>
+        <view>邮箱：</view>
         <view class='copy-button' bindtap='copyText' data-text="875307054@qq.com">复制</view>
       </view>
       <view class='copy'>
-        <view>微信号：bingbing_ou</view>
+        <view>微信号：</view>
         <view class='copy-button' bindtap='copyText' data-text="bingbing_ou">复制</view>
       </view>
     </view>

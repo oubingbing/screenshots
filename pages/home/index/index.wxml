@@ -73,12 +73,6 @@
       </view>
     </view>
 
-    <view class='ad-container'>
-      <view class='ad-content'>
-        <ad unit-id="adunit-e7af2ccfd53b9a3e"></ad>
-      </view>
-    </view>
-
     <!-- 授权 -->
     <view wx:if="{{showAuth}}" class='auth-container'>
       <view class='auth-wall'>

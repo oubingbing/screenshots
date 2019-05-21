@@ -56,3 +56,7 @@
   color: #3CC4A9;
   margin-left: 20rpx;
 }
+
+.ceshi{
+  color: white;
+}
