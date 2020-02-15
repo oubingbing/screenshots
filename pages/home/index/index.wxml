@@ -4,89 +4,57 @@
     <view class='header'>
       <view class='header-content'>
         <view class='notice'>
-          根据自己的需要编辑完成截图后，为了让截图显得更加真实，需要根据系统提示完成对截图的调整，遵纪守法，文明上网，恶搞人生，哈哈。
+          数据来自权威媒体发布，主要是公众号和小程序以及各大电商平台。
         </view>
-        <view class='logo-name'>——恶搞宣言</view>
       </view>
     </view>
 
     <view class='body-content'>
       <view class='content'>
 
-        <view class='service-content'>
-          <view class='service-item' data-url='/pages/wechat/single_chat/single_chat' bindtap='wechatNavigate'>
-            <view class='item-icon'>
-              <image class='service-icon' src='/images/wechat-item.png'></image>
-              <view class='service-title'>单人截图</view>
-            </view>
-            <view class='direct'>
-              <image class='direct-icon' src='/images/turn-right.png'></image>
+      <view class="sestion-content">
+        <picker mode="region" bindchange="bindRegionChange" custom-item="{{customItem}}">
+          <view class="picker select-region">
+            <image src='/images/location.png'></image>
+            <view>{{selectCity}}</view>
+          </view>
+        </picker>
+      </view>
+
+        <view class='content-item' wx:for="{{list}}"
+              wx:key="{{item.id}}">
+          <view class='item-header'>
+            <view class='header-left'>
+              <image src='{{item.avatar}}'></image>
+              <view>{{item.name}}</view>
             </view>
           </view>
-          <view class='service-item' data-url='/pages/wechat/group_chat/group_chat' bindtap='wechatNavigate'>
-            <view class='item-icon'>
-              <image class='service-icon' src='/images/group-logo.png'></image>
-              <view class='service-title'>群聊截图</view>
+          <view class='item-content'>
+          
+            <view class='item-body'>
+              <view class='item-txt'>{{item.content}}</view>
+              <image class='rq-code' 
+                     mode='aspectFill'
+                     data-attachment='{{item.attachment}}'
+                     bindtap='openImag'
+                     wx:if="{{item.attachment!=''}}" 
+                     src='{{item.attachment}}'></image>
+            <view class='location'>
+              <image src='/images/location.png'></image>
+              <view>{{item.city}}</view>
+              <view bindtap='copy' 
+                    data-url='{{item.url}}' 
+                    class='copy' 
+                    wx:if="{{item.url.length>0}}">
+                    复制链接</view>
             </view>
-            <view class='direct'>
-              <image class='direct-icon' src='/images/turn-right.png'></image>
             </view>
-          </view>
-          <view class='service-item' bindtap='wechatNavigate' data-url='/pages/wechat/redpacket/redpacket'>
-            <view class='item-icon'>
-              <image class='service-icon' src='/images/rp.png'></image>
-              <view class='service-title'>红包截图</view>
-            </view>
-            <view class='direct'>
-              <image class='direct-icon' src='/images/turn-right.png'></image>
-            </view>
-          </view>
-          <view class='service-item' bindtap='wechatNavigate' data-url='/pages/wechat/paid/paid'>
-            <view class='item-icon'>
-              <image class='service-icon' src='/images/wechat-pay-logo.png'></image>
-              <view class='service-title'>支付截图</view>
-            </view>
-            <view class='direct'>
-              <image class='direct-icon' src='/images/turn-right.png'></image>
-            </view>
-          </view>
-          <view class='service-item' bindtap='wechatNavigate' data-url='/pages/wechat/wallet/wallet'>
-            <view class='item-icon'>
-              <image class='service-icon' src='/images/wallet.png'></image>
-              <view class='service-title'>钱包截图</view>
-            </view>
-            <view class='direct'>
-              <image class='direct-icon' src='/images/turn-right.png'></image>
-            </view>
-          </view>
-          <view class='service-item' bindtap='wechatNavigate' data-url='/pages/common/course/course'>
-            <view class='item-icon'>
-              <image class='service-icon' src='/images/teach.png'></image>
-              <view class='service-title'>教程建议</view>
-            </view>
-            <view class='direct'>
-              <image class='direct-icon' src='/images/turn-right.png'></image>
-            </view>
+          
+
           </view>
         </view>
-
+        
       </view>
     </view>
-
-    <!-- 授权 -->
-    <view wx:if="{{showAuth}}" class='auth-container'>
-      <view class='auth-wall'>
-        <view class='auth-tips'>
-          <image src='/images/wechat-logo.png'></image>
-          <view>授权您的公开信息(昵称和头像)</view>
-        </view>
-        <button open-type="getUserInfo" 
-                bindgetuserinfo="getAuthUserInfo" 
-                class='auth-button'>
-          <view>授权登录</view>
-        </button>
-      </view>
-    </view>
-
   </view>
 </view>

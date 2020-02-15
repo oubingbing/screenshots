@@ -6,7 +6,7 @@ const config={
     bgImage:"tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.91gGjMXALWNEf6b9dd803a7fe4bf5f75b6afd5705a73.jpg"//个人中心背景图片
   },
   prod:{//生产环境
-    domain: "https://lianyan.kucaroom.com/api/wechat",
+    domain: "https://heping.qiuhuiyi.cn/api/wechat",
     qiniuDomain: "http://image.kucaroom.com/",
     bgImage: "tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.91gGjMXALWNEf6b9dd803a7fe4bf5f75b6afd5705a73.jpg"
   }

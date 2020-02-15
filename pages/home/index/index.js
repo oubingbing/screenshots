@@ -1,69 +1,84 @@
 const http = require("./../../../utils/http.js");
-const util = require("./../../../utils/util.js");
 const app = getApp();
 
 Page({
   data: {
-    showAuth:false
+    pageSize: 10,
+    pageNumber: 1,
+    initPageNumber: 1,
+    list:[],
+    province:[],
+    city:[],
+    provinceName:[],
+    selectCity:"全国",
+    city:""
   },
   onLoad: function (options) {
-    this.checkoutAuth();
-    wx.getSystemInfo({
-      success:res=>{
-        console.log("型号");
-        console.log(res.platform);
+    this.list();
+  },
+
+  openImag:function(e){
+    wx.previewImage({
+      current: e.currentTarget.dataset.attachment, 
+      urls: [e.currentTarget.dataset.attachment] 
+    })
+  },
+
+  copy:function(e){
+    console.log(e)
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.url,
+      success: function (res) {
+        wx.getClipboardData({
+          success: function(res) {
+            console.log(res.data) // data
+          }
+        })
       }
     })
   },
 
-  /**
-   * 检测授权
-   */
-  checkoutAuth:function(){
-    let that = this;
-    wx.getSetting({
-      success(res) {
-        if (!res.authSetting['scope.userInfo']) {
-          that.setData({
-            showAuth: true
-          });
+  bindRegionChange: function (e) {
+    this.setData({
+      selectCity: e.detail.value[1],
+      city: e.detail.value[1],
+      list:[],
+      pageNumber: 1,
+    })
+    this.list();
+  },
+
+  list:function(){
+    http.get(`/mask?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&city=${this.data.city}`, {}, res => {
+      wx.hideLoading();
+      this.setData({ showGeMoreLoadin: false });
+      let resData = res.data;
+      if (resData.code == 0) {
+        let listData = resData.data.page_data;
+        if (listData) {
+          let listMap = this.data.list;
+          listData.map(item => {
+            listMap.push(item);
+          })
+          this.setData({
+            list: listMap,
+            pageNumber: this.data.pageNumber + 1,
+            notDataTips: listMap.length >= 0 ? true : false
+          })
         }
       }
-    })
-  },
-
-  /**
- * 监听用户点击授权按钮
- */
-  getAuthUserInfo: function (data) {
-    this.setData({
-      showAuth: false
     });
-    wx.setStorageSync('user',data.detail.userInfo);
-    //http.login(null, null, null, res => {});
-  },
-
-  wechatNavigate:function(e){
-    let url = e.currentTarget.dataset.url;
-    wx.navigateTo({
-      url: url
-    })
   },
 
   /**
- * 分享
+ * 上拉加载更多
  */
-  onShareAppMessage: function (res) {
-    return {
-      title: '一款生成微信聊天，红包等截图的好用工具',
-      path: '/pages/home/index/index',
-      success: function (res) {
-        // 转发成功
-      },
-      fail: function (res) {
-        // 转发失败
-      }
-    }
+  onReachBottom: function () {
+    this.setData({
+      showGeMoreLoadin: true
+    });
+    this.list();
   },
+
 
 })

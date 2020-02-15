@@ -1,18 +1,11 @@
 {
   "pages": [
-    "pages/home/index/index",
-    "pages/wechat/single_chat/single_chat",
-    "pages/wechat/group_chat/group_chat",
-    "pages/wechat/redpacket/redpacket",
-    "pages/wechat/paid/paid",
-    "pages/wechat/wallet/wallet",
-    "pages/common/edit_screen/edit_screen",
-    "pages/common/course/course"
+    "pages/home/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "white",
-    "navigationBarTitleText": "恶搞截图",
+    "navigationBarTitleText": "口罩预约攻略",
     "navigationBarTextStyle": "black"
   }
 }
