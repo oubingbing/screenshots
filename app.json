@@ -1,11 +1,37 @@
 {
   "pages": [
-    "pages/home/index/index"
+    "pages/home/index/index",
+    "pages/home/zone/index"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于寻找附近的"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "white",
     "navigationBarTitleText": "口罩预约攻略",
     "navigationBarTextStyle": "black"
-  }
+  },
+    "tabBar": {
+      "color": "#515151",
+      "selectedColor": "#FF8C00",
+      "borderStyle": "black",
+      "backgroundColor": "#ffffff",
+      "list": [
+        {
+          "pagePath": "pages/home/index/index",
+          "iconPath": "images/yuyue.png",
+          "selectedIconPath": "images/select-yuyue.png",
+          "text": "本地预约"
+        },
+        {
+          "pagePath": "pages/home/zone/index",
+          "iconPath": "images/xiaoqu.png",
+          "selectedIconPath": "images/select-xiaoqu.png",
+          "text": "病例小区"
+        }
+      ]
+    }
 }

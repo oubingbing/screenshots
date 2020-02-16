@@ -1,0 +1,71 @@
+.map-container{
+  width: 100%;
+}
+
+.content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 30rpx;
+  align-items: center;
+}
+
+.content-item{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.non-data{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100rpx;
+  color: gray;
+}
+
+.search{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.search-content{
+  background: #FF8C00;
+  color: white;
+  padding: 10rpx 30rpx;
+  border-radius: 30rpx;
+}
+
+.item{
+  width: 100%;
+  margin-bottom: 20rpx;
+}
+
+.item .title{
+  font-size: 35rpx;
+  color: #FF8C00;
+  font-weight: bold;
+}
+
+.sub-item{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 15rpx 0rpx;
+  color:gray;
+  border-width:1rpx;
+  border-color: gainsboro;
+  border-bottom-style:solid;
+}
+
+.sub-title{
+  font-size: 30rpx;
+}
+
+.sub-content{
+  font-size: 25rpx;
+}

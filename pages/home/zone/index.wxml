@@ -1,0 +1,26 @@
+
+<map  id="map" 
+      longitude="{{longitude}}" 
+      markers="{{markers}}"
+      latitude="{{latitude}}" scale="14" show-location style="width: 100%; height: 300px;"></map>
+<view class='search'>
+  <view bindtap='search' class='search-content'>查询小区</view>
+</view>
+<view class='non-data' wx:if="{{!showData}}">
+  <view>暂无数据</view>
+</view>
+<view class='map-container' wx:if="{{showData}}">
+  <view class='content'>
+    <view class='content-item'>
+      <view class='item' wx:key="{{index}}" wx:for="{{listData}}">
+        <view class='title'>{{index}}</view>
+        <view class='sub-item'  
+              wx:for="{{item}}" 
+              wx:key="{{sub.name}}" wx:for-item="sub">
+          <view class='sub-title'>{{sub.name}}</view>
+          <view class='sub-content'>{{sub.address}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

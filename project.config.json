@@ -9,7 +9,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.4",
+	"libVersion": "2.9.4",
 	"appid": "wx46d5674c81153f30",
 	"projectname": "%E5%8F%A3%E7%BD%A9%E9%A2%84%E7%BA%A6",
 	"condition": {
@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 10,
 			"list": [
 				{
 					"id": 2,
@@ -98,6 +98,13 @@
 					"id": -1,
 					"name": "钱包截图",
 					"pathName": "pages/wechat/wallet/wallet",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "zone",
+					"pathName": "pages/home/zone/index",
 					"scene": null
 				}
 			]
