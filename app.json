@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/index/index",
+    "pages/home/mall/index",
     "pages/home/zone/index"
   ],
   "permission": {
@@ -25,6 +26,12 @@
           "iconPath": "images/yuyue.png",
           "selectedIconPath": "images/select-yuyue.png",
           "text": "本地预约"
+        },
+        {
+          "pagePath": "pages/home/mall/index",
+          "iconPath": "images/mall.png",
+          "selectedIconPath": "images/select-mall.png",
+          "text": "电商预约"
         },
         {
           "pagePath": "pages/home/zone/index",

@@ -12,15 +12,6 @@
     <view class='body-content'>
       <view class='content'>
 
-      <view class="sestion-content">
-        <picker mode="region" bindchange="bindRegionChange" custom-item="{{customItem}}">
-          <view class="picker select-region">
-            <image src='/images/location.png'></image>
-            <view>{{selectCity}}</view>
-          </view>
-        </picker>
-      </view>
-
       <view class='non-data' wx:if="{{!showData}}">
         <view>暂无数据</view>
       </view>

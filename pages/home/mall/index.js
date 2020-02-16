@@ -17,13 +17,7 @@ Page({
   onLoad: function (options) {
     console.log(options)
     if (options.city != undefined) {
-      if(options.tab==2){
-        wx.switchTab({
-          url: '/pages/home/mall/index'
-        })
-      }else{
-        this.setData({ city: options.city })
-      }
+      this.setData({ city: options.city})
     }
 
     wx.showLoading({
@@ -65,7 +59,7 @@ Page({
   },
 
   list:function(){
-    http.get(`/mask?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&city=${this.data.city}&region=1`, {}, res => {
+    http.get(`/mask?page_size=${this.data.pageSize}&page_number=${this.data.pageNumber}&region=2`, {}, res => {
       wx.hideLoading();
       this.setData({ showGeMoreLoadin: false });
       let resData = res.data;
@@ -107,7 +101,7 @@ Page({
     //timg.jfif
     return {
       title: res.target.dataset.content + "【" + res.target.dataset.id + "口罩预约攻略"+"】",
-      path: '/pages/home/index/index?tab=1&city='+res.target.dataset.id,
+      path: '/pages/home/index/index?&tab=2&city='+res.target.dataset.id,
       imageUrl:"/images/timg.jpg",
       success: function (res) {
         // 转发成功
