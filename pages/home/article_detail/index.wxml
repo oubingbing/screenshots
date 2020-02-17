@@ -1,0 +1,20 @@
+<view class="detail-container">
+  <view class='detail-content'>
+    <view class='title'>{{article.title}}</view>
+    <view class='user-info'>
+      <view class='user'>{{article.from}}</view>
+      <view class='date'>{{article.date}}</view>
+    </view>
+    <view class='content'>
+      <view class='content-item'>
+        <view class='text'>{{article.desc}}</view>
+      </view>
+    </view>
+  </view>
+
+    <view class='home-page' 
+          wx:if="{{showHomePage}}" bindtap='openHome'>
+      <view class='home-title'>首页</view>
+    </view>
+
+</view> 

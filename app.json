@@ -2,7 +2,9 @@
   "pages": [
     "pages/home/index/index",
     "pages/home/mall/index",
-    "pages/home/zone/index"
+    "pages/home/virus/index",
+    "pages/home/zone/index",
+    "pages/home/article_detail/index"
   ],
   "permission": {
     "scope.userLocation": {
@@ -32,6 +34,12 @@
           "iconPath": "images/mall.png",
           "selectedIconPath": "images/select-mall.png",
           "text": "电商预约"
+        },
+        {
+          "pagePath": "pages/home/virus/index",
+          "iconPath": "images/mall.png",
+          "selectedIconPath": "images/select-mall.png",
+          "text": "疫情数据"
         },
         {
           "pagePath": "pages/home/zone/index",

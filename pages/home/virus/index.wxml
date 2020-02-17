@@ -1,0 +1,110 @@
+<view class="body-container">
+  <view class='content'>
+    
+    <view class='header'>
+      <view class='header-content'>
+        <view class='total'>
+          <view class='title'>
+            <view class='title-content'>全国新冠肺炎疫情</view>
+            <view class='update-time'>截止{{mainData.chinaTotalUpdateTime}}</view>
+          </view>
+          <view class='total-info'>
+            <view class="total-one">
+              <view class='yestoday info-item'>
+                <view></view><view class='cinfirm-color'>昨日+{{mainData.chinaDayModify.confirm}}</view>
+              </view>
+              <view class='main-num info-item middle cinfirm-color'>{{mainData.chinaTotal.confirm}}</view>
+              <view class='world-name info-item'>确诊</view>
+            </view>
+            <view class="total-one">
+              <view class='yestoday info-item'>
+                <view></view><view class='suspect-color'>昨日+{{mainData.chinaDayModify.suspect}}</view>
+              </view>
+              <view class='main-num info-item middle suspect-color'>{{mainData.chinaTotal.suspect}}</view>
+              <view class='world-name info-item'>疑似</view>
+            </view>
+            <view class="total-one">
+              <view class='yestoday info-item'>
+                <view></view><view class='heal-color'>昨日+{{mainData.chinaDayModify.heal}}</view>
+              </view>
+              <view class='main-num info-item middle heal-color'>{{mainData.chinaTotal.heal}}</view>
+              <view class='world-name info-item'>治愈</view>
+            </view>
+            <view class="total-one">
+              <view class='yestoday info-item'>
+                <view></view><view class='dead-color'>昨日+{{mainData.chinaDayModify.dead}}</view>
+              </view>
+              <view class='main-num info-item middle dead-color'>{{mainData.chinaTotal.dead}}</view>
+              <view class='world-name info-item'>死亡</view>
+            </view>
+          </view>
+        </view>
+        <view class='out-of-hubei total'>
+          <view class='title'>
+            <view class='title-content'>湖北省外</view>
+          </view>
+          <view class='total-info'>
+            <view class="total-one">
+              <view class='yestoday'>
+                <view></view><view class='cinfirm-color'>{{mainData.otherModify.confirmDesc}}</view>
+              </view>
+              <view class='main-num middle cinfirm-color'>{{mainData.otherTotal.confirmDesc}}</view>
+              <view class='world-name'>确诊</view>
+            </view>
+            <view class="total-one">
+              <view class='yestoday'>
+                <view></view><view class='suspect-color'>{{mainData.otherModify.suspectDesc}}</view>
+              </view>
+              <view class='main-num middle suspect-color'>{{mainData.otherTotal.suspectDesc}}</view>
+              <view class='world-name'>疑似</view>
+            </view>
+            <view class="total-one">
+              <view class='yestoday'>
+                <view></view><view class='heal-color'>{{mainData.otherModify.healDesc}}</view>
+              </view>
+              <view class='main-num middle heal-color'>{{mainData.otherTotal.healDesc}}</view>
+              <view class='world-name'>治愈</view>
+            </view>
+            <view class="total-one">
+              <view class='yestoday'>
+                <view></view><view class='dead-color'>{{mainData.otherModify.deadDesc}}</view>
+              </view>
+              <view class='main-num middle dead-color'>{{mainData.otherTotal.deadDesc}}</view>
+              <view class='world-name'>死亡</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 具体步数内容 -->
+  <view wx:if="{{showData}}" class='content-container'>
+    <view class='content'>
+
+      <view class='item' wx:for="{{list}}" wx:key="{{item.new_id}}">
+          <view class='left'>
+            <view class='date'>{{item.date}}</view>
+          </view>
+          <view class='right'>
+            <view class='travel-log'>
+
+              <view class='my-log'>
+                <view class='my-log-content'>
+                  <view class='new-title'>{{item.title}}</view>
+                  <view class='new-desc'>{{item.desc}}</view>
+                  <view class='new-from'>
+                    <view>{{item.from}}</view>
+                    <view bindtap='articleDetail' 
+                          data-item='{{item}}'
+                          data-id='{{item.new_id}}'>详情</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+      </view>
+    </view>
+  </view>
+
+  </view>
+</view>

@@ -1,6 +1,9 @@
 const http = require("./../../../utils/http.js");
 const app = getApp();
 
+// 在页面中定义插屏广告
+let interstitialAd = null;
+
 Page({
   data: {
     pageSize: 10,
@@ -31,6 +34,25 @@ Page({
       icon: "none"
     })
     this.list();
+
+    if (wx.createInterstitialAd) {
+      interstitialAd = wx.createInterstitialAd({
+        adUnitId: 'adunit-2f60ccb8964f222a'
+      })
+      app.globalData.ad = interstitialAd;
+      interstitialAd.onLoad(() => { })
+      interstitialAd.onError((err) => { })
+      interstitialAd.onClose(() => { })
+    }
+  },
+
+  onReady:function(){
+    console.log("ready")
+    if (interstitialAd) {
+      interstitialAd.show().catch((err) => {
+        console.error(err)
+      })
+    }
   },
 
   openImag:function(e){

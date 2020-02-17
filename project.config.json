@@ -9,7 +9,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.4",
+	"libVersion": "2.9.0",
 	"appid": "wx46d5674c81153f30",
 	"projectname": "%E5%8F%A3%E7%BD%A9%E9%A2%84%E7%BA%A6",
 	"condition": {
@@ -102,9 +102,17 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 10,
 					"name": "zone",
-					"pathName": "pages/home/zone/index",
+					"pathName": "pages/home/article_detail/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "疫情",
+					"pathName": "pages/home/virus/index",
+					"query": "",
 					"scene": null
 				}
 			]
