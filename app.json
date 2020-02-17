@@ -37,9 +37,9 @@
         },
         {
           "pagePath": "pages/home/virus/index",
-          "iconPath": "images/mall.png",
-          "selectedIconPath": "images/select-mall.png",
-          "text": "疫情数据"
+          "iconPath": "images/sheet.png",
+          "selectedIconPath": "images/select-sheet.png",
+          "text": "疫情资讯"
         },
         {
           "pagePath": "pages/home/zone/index",
