@@ -39,7 +39,7 @@
           "pagePath": "pages/home/virus/index",
           "iconPath": "images/sheet.png",
           "selectedIconPath": "images/select-sheet.png",
-          "text": "疫情资讯"
+          "text": "实时疫情"
         },
         {
           "pagePath": "pages/home/zone/index",

@@ -1,6 +1,9 @@
 const http = require("./../../../utils/http.js");
 const app = getApp();
 
+// 在页面中定义插屏广告
+let interstitialAd = null;
+
 Page({
 
   /**
@@ -12,7 +15,8 @@ Page({
     pageNumber: 1,
     initPageNumber: 1,
     list: [],
-    showData:true
+    showData:true,
+    a:false
   },
 
   /**
@@ -20,6 +24,16 @@ Page({
    */
   onLoad: function (options) {
     this.list();
+
+    if (wx.createInterstitialAd) {
+      interstitialAd = wx.createInterstitialAd({
+        adUnitId: 'adunit-8d02c4859a00361b'
+      })
+      app.globalData.ad = interstitialAd;
+      interstitialAd.onLoad(() => { })
+      interstitialAd.onError((err) => { })
+      interstitialAd.onClose(() => { })
+    }
   },
 
   /**
@@ -27,6 +41,12 @@ Page({
    */
   onReady: function () {
     this.newsList()
+
+    if (interstitialAd) {
+      interstitialAd.show().catch((err) => {
+        console.error(err)
+      })
+    }
   },
 
   list: function () {
@@ -38,8 +58,14 @@ Page({
       wx.hideLoading()
       let data = res.data;
       if (data.code == 0){
+        var arr = Object.keys(data.data,)
+        let a = false
+        if(arr.length>0){
+          a=true
+        }
         this.setData({
-          mainData: data.data
+          mainData: data.data,
+          a: a
         })
       }
       console.log(data)

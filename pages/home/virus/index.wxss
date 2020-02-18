@@ -274,7 +274,7 @@
 .update-time{
   font-size: 25rpx;
   color: gray;
-  padding-left: 15rpx;
+  padding-left: 23rpx;
 }
 
 .new-desc{

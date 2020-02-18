@@ -71,7 +71,6 @@ Page({
             listMap.push(item);
           })
           var arr = Object.keys(resData.data.page_data)
-          console.log(arr.length)
           console.log(this.data.pageNumber)
           this.setData({
             showData: arr.length <= 0 && this.data.pageNumber <= 1 ? false : true,

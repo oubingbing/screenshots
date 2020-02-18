@@ -1,7 +1,7 @@
 <view class="body-container">
   <view class='content'>
     
-    <view class='header'>
+    <view class='header' wx:if="{{a}}">
       <view class='header-content'>
         <view class='total'>
           <view class='title'>
