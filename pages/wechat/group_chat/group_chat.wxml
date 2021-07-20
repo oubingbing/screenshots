@@ -1,0 +1,468 @@
+<view class="letter-container">
+
+  <scroll-view scroll-y
+              bindtouchmove="hiddenOperate"
+              bindtap='hiddenOperate'
+              bindscrolltoupper="upper" 
+              bindscrolltolower="lower"
+              scroll-top="{{scrollTop}}" 
+              bindscroll="scroll" 
+              wx:for="{{chatList}}" 
+              wx:key="{{item}}"
+              class='letter-content'>
+    <block wx:if="{{item.data_type==0}}">
+      <view class="scroll-view-item">
+        <view class='user-left'>
+          <view class='left-content-avatar'>
+            <image mode='aspectFill' src='{{item.user.avatar}}'></image>
+          </view>
+          <view class='left-content' bindlongpress='deleteContent' data-id='{{index}}'>
+            <view class="leftusername">{{item.user.nickname}}</view>
+            <!-- 文字消息 -->
+            <view class='left-content-message' wx:if="{{item.message.type==1}}">
+              <view class="qipao"></view>
+              <view wx:if="{{item.message.type==1}}" class='left-content-item'>{{item.message.content}}</view>
+            </view>
+
+            <!-- 图片 -->
+            <view class='left-content-message' wx:if="{{item.message.type==2}}">
+              <view class='left-content-item-img'>
+                <image mode='widthFix' bindtap='previewImage' src="{{item.message.content}}"></image>
+              </view>
+            </view>
+
+            <!-- 发红包 -->
+            <view class='left-content-message' wx:if="{{item.message.type==5}}">
+              <view class="left-red-qipao"></view>
+              <view class='right-content-item-red'>
+                <view class='red-content'>
+                  <view class='red-packet-image'><image src='/images/rp.png'></image></view>
+                  <view class='red-packet-world'>{{item.message.content}}</view>
+                </view>
+                <view class='red-packet-title'>微信红包</view>
+              </view>
+            </view>
+
+            <!-- 领红包 -->
+            <view class='left-content-message-repacket' wx:if="{{item.message.type==6}}">
+              <view class='left-reveice-container'>
+                <view class="left-receive-qipao"></view>
+                <view class='right-content-item-red right-content-item-receive-rp'>
+                  <view class='red-content'>
+                    <view class='red-packet-image'>
+                      <image src='/images/open-rp.png'></image>
+                    </view>
+                    <view class='red-packet-world'>
+                      <view>{{item.message.content}}</view>
+                      <view class='receive-world'>已领取</view>
+                    </view>
+                  </view>
+                  <view class='red-packet-title receive-rp-title'>微信红包</view>
+                </view>
+              </view>
+              <view class='left-receive-nickname receive-nickname'>
+                <image src='/images/rp.png'></image>
+                <view>{{item.message.attachment}}领取了</view>
+                <view class='receive-nickname-title'>红包</view>
+              </view>
+            </view>
+
+            <!-- 转账 -->
+            <view class='left-content-message' wx:if="{{item.message.type==7}}">
+              <view class="left-red-qipao"></view>
+              <view class='right-content-item-red'>
+                <view class='red-content'>
+                  <view class='red-packet-image'>
+                    <image src='/images/transfer.png'></image>
+                  </view>
+                  <view class='red-packet-world'>
+                    <view>{{item.message.content}}</view>
+                    <view class='transfer-amount-label'>￥{{item.message.attachment}}</view>
+                  </view>
+                </view>
+                <view class='red-packet-title'>微信转账</view>
+              </view>
+            </view>
+
+            <!-- 收钱 -->
+            <view class='left-content-message-repacket' wx:if="{{item.message.type==8}}">
+              <view class='left-reveice-container'>
+                <view class="left-receive-qipao"></view>
+                <view class='right-content-item-red right-content-item-receive-rp'>
+                  <view class='red-content'>
+                    <view class='red-packet-image'>
+                      <image style='width:80rpx;height:80rpx;' src='/images/receive-amount.png'></image>
+                    </view>
+                    <view class='red-packet-world'>
+                      <view>{{item.message.content}}</view>
+                      <view class='receive-world' style='font-size:30rpx'>￥{{item.message.attachment}}</view>
+                    </view>
+                  </view>
+                  <view class='red-packet-title receive-rp-title'>微信转账</view>
+                </view>
+              </view>
+            </view>
+
+
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{item.data_type==1}}">
+      <view class="scroll-view-item">
+        <view class='user-right'>
+          <view class='right-content' bindlongpress='deleteContent' data-id='{{index}}'>
+          
+            <!--文字消息 -->
+            <view class='right-content-message' wx:if="{{item.message.type==1}}">
+              <view class='right-content-item-txt'>{{item.message.content}}</view>
+              <view class="qipao"></view>
+            </view>
+
+            <!-- 图片 -->
+            <view class='right-content-message' wx:if="{{item.message.type==2}}">
+              <view class='right-content-item-img'>
+                <image mode='widthFix' bindtap='previewImage' src="{{item.message.content}}"></image>
+              </view>
+            </view>
+
+            <!-- 发红包 -->
+            <view class='right-content-message' wx:if="{{item.message.type==5}}">
+              <view class='right-content-item-red'>
+                <view class='red-content'>
+                  <view class='red-packet-image'><image src='/images/rp.png'></image></view>
+                  <view class='red-packet-world'>{{item.message.content}}</view>
+                </view>
+                <view class='red-packet-title'>微信红包</view>
+              </view>
+              <view class="red-qipao"></view>
+            </view>
+
+            <!-- 领红包 -->
+            <view class='right-content-message-repacket' wx:if="{{item.message.type==6}}">
+              <view class='reveice-container'>
+                <view class='right-content-item-red right-content-item-receive-rp'>
+                  <view class='red-content'>
+                    <view class='red-packet-image'>
+                      <image src='/images/open-rp.png'></image>
+                    </view>
+                    <view class='red-packet-world'>
+                      <view>{{item.message.content}}</view>
+                      <view class='receive-world'>已领取</view>
+                    </view>
+                  </view>
+                  <view class='red-packet-title receive-rp-title'>微信红包</view>
+                </view>
+                <view class="red-qipao receive-rp-qipao"></view>
+              </view>
+              <view class='receive-nickname'>
+                <image src='/images/rp.png'></image>
+                <view>{{item.message.attachment}}领取了</view>
+                <view class='receive-nickname-title'>红包</view>
+              </view>
+            </view>
+
+            <!-- 转账 -->
+            <view class='right-content-message' wx:if="{{item.message.type==7}}">
+              <view class='right-content-item-red'>
+                <view class='red-content'>
+                  <view class='red-packet-image'>
+                    <image src='/images/transfer.png'></image>
+                  </view>
+                  <view class='red-packet-world'>
+                    <view>{{item.message.content}}</view>
+                    <view class='transfer-amount-label'>￥{{item.message.attachment}}</view>
+                  </view>
+                </view>
+                <view class='red-packet-title'>微信转账</view>
+              </view>
+              <view class="red-qipao"></view>
+            </view>
+
+            <!-- 收钱 -->
+            <view class='right-content-message-repacket' wx:if="{{item.message.type==8}}">
+              <view class='reveice-container'>
+                <view class='right-content-item-red right-content-item-receive-rp'>
+                  <view class='red-content'>
+                    <view class='red-packet-image'>
+                      <image style='width:80rpx;height:80rpx;' src='/images/receive-amount.png'></image>
+                    </view>
+                    <view class='red-packet-world'>
+                      <view>{{item.message.content}}</view>
+                      <view class='receive-world' style='font-size:30rpx'>￥{{item.message.attachment}}</view>
+                    </view>
+                  </view>
+                  <view class='red-packet-title receive-rp-title'>微信转账</view>
+                </view>
+                <view class="red-qipao receive-rp-qipao"></view>
+              </view>
+            </view>
+
+          </view>
+          <view class='right-content-avatar'>
+            <image mode='aspectFill' src='{{item.user.avatar}}'></image>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class='date-content' wx:if="{{item.data_type==2}}">
+      <view class='date'>{{item.message.content}}</view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部操作输入 -->
+  <view class='footer {{footerViewClass}}' catchtap='hiddenFooterView'>
+    <view class='footer-content' catchtap='operate'>
+      <view class='sound-icon'>
+        <image src='/images/wx-sound.png'></image>
+      </view>
+      <view class='textarea'>
+        <view class='txt'></view>
+      </view>
+      <view class='left-wx-icon'>
+        <image src='/images/wx-face.png'></image>
+        <image src='/images/wx-add.png'></image>
+      </view>
+    </view>
+
+    <!-- 添加成员 -->
+    <view class='chat-members' wx:if="{{showGroupMember}}" catchtap='test'>
+      <view class='member'>
+        <view class='group-name'>
+          <view wx:if="{{showGroupName}}" catchtap='showGroupNameInput'>{{groupName}}</view>
+          <input type='text' 
+                 class='nickname-input'
+                 wx:if="{{!showGroupName}}" 
+                 placeholder="设置群名称"
+                 bindblur="loseGrouNameCous"
+                 value='{{groupName}}'          
+                 bindinput='getGroupname'/>
+        </view>
+        <view class='member-content'>
+          <view class='member-left'>
+            <view class='member-group' wx:for="{{leftUser}}" wx:key="{{item}}">
+              <view class='select-member' data-type='0' data-id='{{item.id}}' catchtap='selectChatUser'>
+                <image src='/images/select-icon.png' wx:if="{{item.select==false}}"></image>
+                <image src='/images/select-choose.png' wx:if="{{item.select==true}}"></image>
+              </view>
+              <view class='member-view'>
+                <view class='member-avatar'>
+                  <image src='/images/select-image.png' 
+                        wx:if="{{item.avatar==''}}" 
+                        data-type='0'
+                        data-userid='{{item.id}}'
+                        catchtap='selectImage'></image>
+                  <image src='{{item.avatar}}' 
+                        mode='aspectFill' 
+                        wx:if="{{item.avatar!=''}}" 
+                        data-type='0' 
+                        catchtap='selectImage'></image>
+                </view>
+                <input type='text' 
+                      class='nickname-input'
+                      wx:if="{{item.showInput==true}}" 
+                      placeholder="昵称"
+                      data-type='0'
+                      data-userid='{{item.id}}'
+                      bindblur="loseCous"
+                      value='{{leftValue}}'          
+                      bindinput='getNickname'/>
+                <view class='member-nickname' 
+                      data-type='0'
+                      catchtap='showInputView'
+                      data-userid='{{item.id}}'
+                      wx:if="{{item.showInput==false}}">{{item.nickname}}</view>
+              </view>
+            </view>
+          </view>
+
+          <view class='member-right'>
+            <view class='right-member-view'>
+              <view class='right-member-avatar'>
+                <image src='/images/select-image.png' 
+                      wx:if="{{rightUser.avatar==''}}" 
+                      data-type='1' 
+                      catchtap='selectImage'></image>
+                <image src='{{rightUser.avatar}}' 
+                      mode='aspectFill' 
+                      wx:if="{{rightUser.avatar!=''}}" 
+                      data-type='1' 
+                      catchtap='selectImage'></image>
+              </view>
+              <input type='text' 
+                    class='nickname-input'
+                    wx:if="{{hiddenRightInput==false}}"
+                    data-type='1'
+                    value='{{rightValue}}'
+                    bindblur="loseCous"   
+                    placeholder="昵称"         
+                    bindinput='getNickname'/>
+              <view class='member-nickname'
+                    data-type='1'
+                    catchtap='showInputView' 
+                    wx:if="{{hiddenRightInput==true}}">{{rightUser.nickname}}</view>
+            </view>
+            <view class='select-member' data-type='1' catchtap='selectChatUser'>
+                <image src='/images/select-icon.png' wx:if="{{rightUser.select ==false}}"></image>
+              <image src='/images/select-choose.png' wx:if="{{rightUser.select == true}}"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='select-group-member' catchtap='addGroupMember'>继续添加成员</view>
+    </view>
+
+    <!-- 添加消息内容 -->
+    <view class='operate-container' wx:if="{{showOperate}}" catchtap='test'>
+      <view class='operate-content'>
+
+        <view class='operate-item' catchtap='showMemberGroupView'>
+          <view class='image-wall'><image src='/images/member-setting.png'></image></view>
+          <view class='item-txt'>群成员设置</view>
+        </view>
+
+        <view class='operate-item' catchtap='showCreateView' data-type='1'>
+          <view class='image-wall'><image src='/images/wx-txt.png'></image></view>
+          <view class='item-txt'>添加文字</view>
+        </view>
+
+        <view class='operate-item' catchtap='showCreateView' data-type='2'>
+          <view class='image-wall'><image src='/images/wx-image.png'></image></view>
+          <view class='item-txt'>添加图片</view>
+        </view>
+
+        <!--<view class='operate-item'>
+          <view class='image-wall'><image src='/images/wx-sound-img.png'></image></view>
+          <view class='item-txt'>添加语音</view>
+        </view>-->
+
+        <!--<view class='operate-item'>
+          <view class='image-wall'><image src='/images/wx-image.png'></image></view>
+          <view class='item-txt'>添加时间</view>
+        </view>-->
+
+        <view class='operate-item' catchtap='showCreateView' data-type='5'>
+          <view class='image-wall'><image src='/images/wx-rp.png'></image></view>
+          <view class='item-txt'>发红包</view>
+        </view>
+
+        <view class='operate-item' catchtap='showCreateView' data-type='6'>
+          <view class='image-wall'><image src='/images/wx-rp.png'></image></view>
+          <view class='item-txt'>领红包</view>
+        </view>
+
+        <view class='operate-item' catchtap='showCreateView' data-type='7'>
+          <view class='image-wall'><image src='/images/wx-tansport.png'></image></view>
+          <view class='item-txt'>添加转账</view>
+        </view>
+
+        <view class='operate-item' catchtap='showCreateView' data-type='8'>
+          <view class='image-wall'><image src='/images/wx-tansport.png'></image></view>
+          <view class='item-txt'>添加收款</view>
+        </view>
+
+        <view class='operate-item' catchtap='showCreateView' data-type='9'>
+          <view class='image-wall'><image src='/images/date-icon.png'></image></view>
+          <view class='item-txt'>时间日期</view>
+        </view>
+
+        <view class='operate-item' catchtap='clearChat' data-type='8'>
+          <view class='image-wall'><image src='/images/clear.png'></image></view>
+          <view class='item-txt'>清空聊天</view>
+        </view>
+
+      </view>
+    </view>
+
+  </view>
+
+  <view class='create-view' wx:if="{{showCreateView}}">
+    <view class='null-container' catchtap='closeCreateView'></view>
+    <view class='create-container'>
+      <!-- 添加文字信息 -->
+      <view class='create-text' wx:if="{{messageType==1}}">
+        <textarea 
+          maxlength="1024"
+          cursor-spacing="30"
+          class='text-input'
+          placeholder="输入内容"    
+          bindinput="getTextContent"/>
+      </view>
+
+      <!-- 发红包 -->
+      <view class='create-text' wx:if="{{messageType==5}}">
+        <textarea 
+          maxlength="1024"
+          value='{{redPacketTitle}}'
+          class='text-input'
+          bindinput="getRedTextContent"/>
+      </view>
+
+      <!-- 领红包 -->
+      <view class='receive-redpacket' wx:if="{{messageType==6}}">
+        <textarea 
+          maxlength="1024"
+          value='{{redPacketTitle}}'
+          bindinput="getRedTextContent"/>
+      </view>
+
+      <!-- 转账 -->
+      <view class='receive-redpacket' wx:if="{{messageType==7}}">
+        <view class='amount-input'>
+          <input
+          class='t-amount'
+          placeholder="输入转账金额"    
+          bindinput="getTransferAmount"/>
+          <view class='amount-label'>￥</view>
+        </view>  
+        <view class='receive-man'>
+          <view class='right-receive receive-item'>
+            <image src="{{getTransferAmountTo==0?'/images/select-choose.png':'/images/select-icon.png'}}"
+                   class='receive-icon' 
+                   data-type='0' 
+                   catchtap='selectTransferAmountTo'></image>
+            <image class='receive-avatar' 
+                   style='height:80rpx;width:80rpx;'
+                   mode='aspectFill'
+                   src='{{rightUser.avatar}}'></image>
+          </view>
+          <view class='left-receive receive-item' wx:for="{{leftUser}}" wx:key="{{itme.id}}">
+            <image class='receive-icon' 
+                   src="{{getTransferAmountTo==item.id?'/images/select-choose.png':'/images/select-icon.png'}}" 
+                   data-type='{{item.id}}' 
+                   catchtap='selectTransferAmountTo'></image>
+            <image class='receive-avatar' 
+                   style='height:80rpx;width:80rpx;'
+                   mode='aspectFill'
+                   src='{{item.avatar}}'></image>
+          </view>
+        </view>
+      </view>
+
+      <!-- 收钱 -->
+      <view class='receive-redpacket' wx:if="{{messageType==8}}">
+        <view class='amount-input'>
+          <input
+          class='t-amount'
+          placeholder="输入收款金额"    
+          bindinput="getTransferAmount"/>
+          <view class='amount-label'>￥</view>
+        </view>  
+      </view>
+
+      <!-- 时间日期 -->
+      <view class='receive-redpacket' wx:if="{{messageType==9}}">
+        <view class='amount-input'>
+          <input
+          class='t-amount'
+          placeholder="周二 12:00 或 14:20"    
+          bindinput="getDateTimeString"/>
+        </view>  
+      </view>
+
+      <view class='create-button' catchtap='pushMessage'>添加</view>
+    </view>
+  </view>
+
+</view>

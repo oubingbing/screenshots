@@ -1,0 +1,81 @@
+
+.edit-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-body{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.select-icon{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 99;
+}
+
+.icon{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon image{
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.select-title{
+  font-size: 30rpx;
+  padding: 20rpx 0rpx;
+  color: darkgray;
+}
+
+.image-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 100;
+  background:rgba(2,2,2,0.6);
+  align-items: center;
+  justify-content: center;
+}
+
+.image-content{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 10rpx;
+}
+
+.save-image{
+  background: #3CC4A9;
+  width: 50%;
+  padding: 20rpx 0rpx;
+  margin-top: 60rpx;
+  color: white;
+  text-align: center;
+  border-radius: 10rpx;
+}
+
+.image-content image{
+  width:100%;
+  border-radius: 10rpx;
+}
+
+.convas{
+  width: 375px;
+  height: 667px;
+}

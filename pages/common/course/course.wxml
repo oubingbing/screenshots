@@ -1,0 +1,64 @@
+<view class="course-container">
+  <view class='course-content'>
+    <view class='section'>
+      恶搞截图是一款可以生成聊天或者红包等截图的小程序，用于娱乐生活，恶搞人生。您需要根据自己的需求编辑截图，然后自行截屏，然后根据系统提示完善截图。
+    </view>
+
+    <!--建议-->
+    <view class='section'>
+      <view class='title'>建议&bug</view>
+      <view>如果您在使用过程中觉得有什么地方需要完善或者觉得需要增加功能的以及发现了bug可以发送邮件或者添加作者微信反馈相应的信息，作者会尽最大的努力去完善的，祝您生活愉快，谢谢。</view>
+      <view class='copy'>
+        <view>邮箱：</view>
+        <view class='copy-button' bindtap='copyText' data-text="875307054@qq.com">复制</view>
+      </view>
+      <view class='copy'>
+        <view>微信号：</view>
+        <view class='copy-button' bindtap='copyText' data-text="bingbing_ou">复制</view>
+      </view>
+    </view>
+
+    <view class='section'>
+      <view style='color:#3CC4A9'>以下为使用教程</view>
+    </view>
+
+    <view class='section'>
+      <view class='title'>优化截图右上角小程序胶囊</view>
+      <view>微信小程序的右上角的胶囊按钮是无法遮盖的，所以当您截图后需要根据系统提示，上传当前的截图处理掉这个胶囊，以便使得截图更加真实。</view>
+      <image src='/images/dealwith.png' bindtap='previewImage' data-id='/images/dealwith.png'></image>
+      <view>截图后系统会提示需要优化截图，截图完成后，需要停留在当前页面不要做任何操作，等待系统提示，有些手机截图后可能会马上弹出该提示，但有些安卓手机需要等待两秒左右。</view>
+      <image src='/images/system-tip.jpg' bindtap='previewImage' data-id='/images/system-tip.jpg'></image>
+    </view>
+    <view class='section'>
+      <view class='title'>单聊截图</view>
+      <view>1.点击聊天输入框</view>
+      <view>2设置聊天成员（点击头像或者昵称即可编辑）</view>
+      <view>3.勾选需要发送信息的一方</view>
+      <view>4.点击你需要的功能，添加文字、图片、红包或者转账的信息，然后截屏即可</view>
+      <view>5.点击情况数据就能清掉所有聊天信息重新开始了</view>
+      <view>6.长按聊天内容可以删除</view>
+      <image src='/images/single-chat-pic.jpg' bindtap='previewImage' data-id='/images/single-chat-pic.jpg'></image>
+    </view>
+    <view class='section'>
+      <view class='title'>群聊截图</view>
+      <view>1.点击聊天输入框</view>
+      <view>2.选择群成员设置</view>
+      <view>3.填写群名称</view>
+      <view>4.添加群成员，点击继续添加群成员添加</view>
+      <view>5.点击聊天输入框》设置聊天成员（点击头像或者昵称即可编辑）</view>
+      <view>6.勾选需要发送信息的一方</view>
+      <view>7.点击你需要的功能，添加文字、图片、红包或者转账的信息，然后截屏即可</view>
+      <view>8.点击情况数据就能清掉所有聊天信息重新开始了</view>
+      <view>9.长按聊天内容可以删除</view>
+      <image src='/images/group-chat-pic.jpg' bindtap='previewImage' data-id='/images/group-chat-pic.jpg'></image>
+    </view>
+    <view class='section'>
+      <view class='title'>红包截图</view>
+      <view>1.点击头像选择头像</view>
+      <view>2.输入昵称</view>
+      <view>3.点击祝福语可编辑（恭喜发财，大吉大利）</view>
+      <view>4.输入红包金额</view>
+      <image src='/images/redpacket-pic.jpg' bindtap='previewImage' data-id='/images/redpacket-pic.jpg'></image>
+    </view>
+  </view>
+</view>

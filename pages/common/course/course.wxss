@@ -1,0 +1,62 @@
+.course-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-content{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50rpx;
+}
+
+.section{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 35rpx;
+  padding: 10rpx 0rpx;
+}
+
+.title{
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.section image{
+  width: 40%;
+  margin-top: 20rpx;
+}
+
+.ad-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 0rpx;
+}
+
+.ad-content{
+  width: 95%;
+  border-radius: 10rpx;
+}
+
+.copy{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.copy-button{
+  color: #3CC4A9;
+  margin-left: 20rpx;
+}
+
+.ceshi{
+  color: white;
+}

@@ -1,0 +1,129 @@
+<view class="wallet-container">
+  <view class='wallet-content'>
+    <view class='header'>
+      <view class='header-left'>
+        <view class='icon'>
+          <image src='/images/wallet-scan.png'></image>
+        </view>
+        <view class='left-label'>收付款</view>
+      </view>
+      <view class='header-right'>
+        <view class='right-icon'>
+          <image src='/images/right-wallet.png'></image>
+        </view>
+        <view class='right-label'>
+          <view>钱包</view>
+          <view class='amount' catchtap='showAmountInput' wx:if="{{showAmountInput==false}}">
+            <view>￥</view>
+            <view>{{amount}}</view>
+          </view>
+          <view class='amount' wx:if="{{showAmountInput==true}}">
+            <input type='text' 
+                    class='amount-input'
+                    value='{{amount}}'
+                    placeholder="设置余额"
+                    bindblur="loseAmountCous" 
+                    bindinput='getAmount'/>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='tencent-content'>
+      <view class='tencent-title'>腾旭服务</view>
+      <view class='tencent-item'>
+        <view class='item item-right-border'>
+          <image src='/images/xinyongka.png'></image>
+          <view class='label'>信用卡还款</view>
+        </view>
+        <view class='item item-right-border'>
+          <image src='/images/weili.png'></image>
+          <view class='label'>微粒贷借钱</view>
+        </view>
+        <view class='item'>
+          <image src='/images/phone-recharge.png'></image>
+          <view class='label'>手机充值</view>
+        </view>
+        <view class='item item-right-border'>
+          <image src='/images/licaitong.png'></image>
+          <view class='label'>理财通</view>
+        </view>
+        <view class='item item-right-border'>
+          <image src='/images/jiaofei.png'></image>
+          <view class='label'>生活缴费</view>
+        </view>
+        <view class='item'>
+          <image src='/images/QQ-recharge.png'></image>
+          <view class='label'>Q币充值</view>
+        </view>
+        <view class='item item-right-border'>
+          <image src='/images/city-sevice.png'></image>
+          <view class='label'>城市服务</view>
+        </view>
+        <view class='item item-right-border'>
+          <image src='/images/gongyi.png'></image>
+          <view class='label'>腾讯公益</view>
+        </view>
+        <view class='item'>
+          <image src=''></image>
+          <view class='label'></view>
+        </view>
+      </view>
+    </view>
+
+    <view class='tencent-content'>
+      <view class='tencent-title'>第三方服务</view>
+      <view class='tencent-item'>
+        <view class='item item-right-border'>
+          <image src='/images/trai.png'></image>
+          <view class='label'>火车票机票</view>
+        </view>
+        <view class='item item-right-border'>
+          <image src='/images/didi.png'></image>
+          <view class='label'>滴滴出行</view>
+        </view>
+        <view class='item'>
+          <image src='/images/jingdong.png'></image>
+          <view class='label'>京东优选</view>
+        </view>
+        <view class='item item-right-border'>
+          <image src='/images/meituan.png'></image>
+          <view class='label'>美团外卖</view>
+        </view>
+        <view class='item item-right-border'>
+          <image src='/images/maoyan.png'></image>
+          <view class='label'>电影演出赛事</view>
+        </view>
+        <view class='item'>
+          <image src='/images/eatplay.png'></image>
+          <view class='label'>吃喝玩乐</view>
+        </view>
+        <view class='item item-right-border'>
+          <image src='/images/cuang.png'></image>
+          <view class='label'>酒店</view>
+        </view>
+        <view class='item item-right-border'>
+          <image src='/images/pingduoduo.png'></image>
+          <view class='label'>拼多多</view>
+        </view>
+        <view class='item'>
+          <image src='/images/mogu.png'></image>
+          <view class='label'>蘑菇街女装</view>
+        </view>
+        <view class='item item-right-border'>
+          <image src='/images/vip.png'></image>
+          <view class='label'>唯品会特卖</view>
+        </view>
+        <view class='item item-right-border'>
+          <image src='/images/zhuang.png'></image>
+          <view class='label'>转转二手</view>
+        </view>
+        <view class='item'>
+          <image src='/images/beike.png'></image>
+          <view class='label'>贝壳找房</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>
